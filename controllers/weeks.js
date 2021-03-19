@@ -40,9 +40,9 @@ function show(req, res) {
 // DELETE
 function deleteWeek(req, res) {
   // res.send('deleting...')
-  Week.findByIdAndRemove(req.params.id, (err, data) => {
+  Week.deleteOne({ _id: req.params.id }, function(err) {
     res.redirect("/weeks");
-  });
+  })
 }
 
 // EDIT

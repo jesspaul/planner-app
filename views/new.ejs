@@ -9,9 +9,19 @@
 <body>
   <h1>New Week page</h1>
   <form action="/weeks" method="POST">
-    Name: <input type="text" name="name" /><br />
-    Color: <input type="text" name="color" /><br />
-    Is Ready To Eat: <input type="checkbox" name="readyToEat" /><br />
+    <label>
+      First Day:
+      <input type="date" name="startDay" /><br />
+    </label>
+    <label>
+      Last Day:
+      <input type="date" name="endDay" /><br />
+    </label>
+    <label>
+      Habits: 
+      <input type="checkbox" name="habit1" id="habit1">
+      <label for="#habit1">habit1</label>
+    </label>
     <input type="submit" name="" value="Create Week" />
   </form>
 </body>
