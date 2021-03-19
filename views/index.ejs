@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <h1>Weeks index page</h1>
+  <ul>
+    <% for(let i = 0; i < weeks.length; i++){ %>
+    <li>
+      The <a href="/weeks/<%=weeks[i].id; %>">
+        <%=weeks[i].name; %>
+      </a> is <%=weeks[i].color; %>.
+      <% if(weeks[i].readyToEat === true){ %>
+      It is ready to eat
+      <% } else { %>
+      It is not ready to eat
+      <% } %>
+      <!-- ADD DELETE FORM HERE -->
+      <form action="/weeks/<%=weeks[i].id%>?_method=DELETE" method="POST">
+        <input type="submit" value="DELETE" />
+      </form>
+      <!-- weeks/5e5a93cd12675b4c0efcb17e/edit -->
+      <a href="/weeks/<%=weeks[i].id%>/edit">Edit</a>
+    </li>
+    <% } %>
+  </ul>
+
+</body>
+
+</html>
