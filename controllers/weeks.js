@@ -56,7 +56,8 @@ function show(req, res) {
   Week.findById(req.params.id, (err, foundWeek) => {
     res.render("weeks/show.ejs", {
       week: foundWeek,
-      days: foundWeek.days
+      days: foundWeek.days,
+      goals: foundWeek.goals,
     });
   });
 }
@@ -100,6 +101,21 @@ function update(req, res) {
     }
     );
   }
+
+  function newGoal(req, res) {
+    res.render('weeks/newgoal.ejs', {
+      weekId: req.params.id
+    });
+  }
+
+  function createGoal(req, res) {
+    Week.findById(req.params.id, function(err, foundWeek) {
+      foundWeek.goals.push(req.body);
+      foundWeek.save(function(err) {
+        res.redirect(`/weeks/${foundWeek._id}`);
+    });
+    });
+  }
   
   module.exports = {
     index,
@@ -108,6 +124,8 @@ function update(req, res) {
     show,
     delete: deleteWeek,
     edit,
-    update
+    update,
+    newGoal,
+    createGoal
   }
   

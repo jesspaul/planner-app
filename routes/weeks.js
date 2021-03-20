@@ -9,5 +9,7 @@ router.delete('/:id', weeksCtrl.delete);
 router.get('/:id/edit', weeksCtrl.edit);
 router.put('/:id', weeksCtrl.update);
 router.get('/:id', weeksCtrl.show);
+router.get('/:id/goals/new', weeksCtrl.newGoal);
+router.post('/:id/goals', weeksCtrl.createGoal);
 
 module.exports = router;

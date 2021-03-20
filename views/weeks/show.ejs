@@ -30,6 +30,18 @@
   </div>
 <% }); %>
 
+<div class="goals">
+  <h2>Goals</h2>
+  <ul>
+    <% goals.forEach(function(goal) { %>
+      <li>
+        Content: <%= goal.content %>
+      </li>
+    <% }); %>
+  </ul>
+  <a href="/weeks/<%= week._id %>/goals/new">New Goal</a>
+</div>
+
 <nav>
   <a href="/weeks">Back to Weeks Index</a>
 </nav>
