@@ -19,14 +19,15 @@
   
   <% days.forEach(function(day) { %>
     <div class="day">
-      <h2><%= day.weekday %></h2>
-      <h2><%= day.weekdate %></h2>
+      <h2><%= day.weekday %> <%= day.weekdate %></h2>
       <div class="entries">
         <ul>
-          <% entries.forEach(function(entry) { %>
-            <li><%= entry.text %></li>
+          <% day.entries.forEach(function(entry) { %>
+            <li><%= entry.content %></li>
           <% }); %>
         </ul>
+
+        <a href="/days/<%= day._id %>/entries/new">New</a>
       </div>
     </div>
   <% }); %>

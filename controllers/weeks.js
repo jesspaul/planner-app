@@ -5,13 +5,13 @@ const Week = require("../models/week.js");
 function index(req, res) {
   Week.find({}, (error, weeks) => {
     // res.send(weeks);
-    res.render("index.ejs", { weeks });
+    res.render("weeks/index.ejs", { weeks });
   });
 }
 
 // NEW
 function newWeek(req, res) {
-  res.render("new.ejs");
+  res.render("weeks/new.ejs");
 }
 
 // CREATE
@@ -54,8 +54,9 @@ function create(req, res) {
 // SHOW ONE
 function show(req, res) {
   Week.findById(req.params.id, (err, foundWeek) => {
-    res.render("show.ejs", {
-      week: foundWeek
+    res.render("weeks/show.ejs", {
+      week: foundWeek,
+      days: foundWeek.days
     });
   });
 }
@@ -72,7 +73,7 @@ function deleteWeek(req, res) {
 // /weeks/5e5a93cd12675b4c0efcb17e/edit
 function edit(req, res) {
   Week.findById(req.params.id, (err, foundWeek) => {
-    res.render("edit.ejs", {
+    res.render("weeks/edit.ejs", {
       week: foundWeek
     });
   });

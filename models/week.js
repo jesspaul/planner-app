@@ -22,10 +22,6 @@ const daySchema = new Schema({
   weekday: String,
   weekdate: Number,
   entries: [entrySchema],
-  week: {
-    type: Schema.Types.ObjectId,
-    ref: 'Week'
-  }
 }, { timestamps: true });
 
 const weekSchema = new Schema({
