@@ -11,5 +11,7 @@ router.put('/:id', weeksCtrl.update);
 router.get('/:id', weeksCtrl.show);
 router.get('/:id/goals/new', weeksCtrl.newGoal);
 router.post('/:id/goals', weeksCtrl.createGoal);
+router.get('/:id/goals/:goalId/edit', weeksCtrl.editGoal);
+router.put('/id/goals/:goalId', weeksCtrl.updateGoal);
 
 module.exports = router;

@@ -36,6 +36,10 @@
     <% goals.forEach(function(goal) { %>
       <li>
         Content: <%= goal.content %>
+        <a href="/weeks/<%= week._id %>/goals/<%= goal._id %>/edit">Edit</a>
+            <form action="/weeks/<%= week._id %>/goals/<%= goal._id %>?_method=DELETE" method="post">
+              <button type="submit">Delete</button>
+            </form>
       </li>
     <% }); %>
   </ul>
