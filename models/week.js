@@ -11,8 +11,12 @@ const habitSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 const weekSchema = new mongoose.Schema({
-  startDay: Date,
-  endDay: Date,
+  startDay: String,
+  endDay: String,
+  month: String,
+  year: Number,
+  weekday: String,
+  weekdate: Number,
   // days: [],
   habits: [habitSchema],
   goals: [goalSchema],

@@ -11,8 +11,13 @@
   <ul>
     <% weeks.forEach(function(week) { %>
     <li>
-      The <a href="/weeks/<%= week._id; %>">week</a> starts on <%= week.startDay %> and ends on <%= week.endDay %>.
-      The week is in the month of <%= week.startDay.getMonth() %> and the year of <%= week.endDay.getFullYear() %>.
+      <a href="/weeks/<%= week._id; %>">Week</a><br>
+      Start Day: <%= week.startDay %><br>
+      Month: <%= week.month %><br>
+      Year: <%= week.year %><br>
+      Weekday: <%= week.weekday %><br>
+      Date: <%= week.weekdate %><br>
+      End Day: <%= week.endDay %>
 
       <!-- ADD DELETE FORM HERE -->
       <form action="/weeks/<%= week._id%>?_method=DELETE" method="POST">

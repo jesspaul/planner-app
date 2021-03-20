@@ -1,3 +1,4 @@
+const { set } = require("mongoose");
 const Week = require("../models/week.js");
 
 // INDEX..aka SHOW ALL
@@ -15,13 +16,21 @@ function newWeek(req, res) {
 
 // CREATE
 function create(req, res) {
-  if (req.body.readyToEat === "on") {
-    //if checked, req.body.readyToEat is set to 'on'
-    req.body.readyToEat = true;
-  } else {
-    //if not checked, req.body.readyToEat is undefined
-    req.body.readyToEat = false;
-  }
+  const dateInput = new Date(req.body.startDay);
+
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  
+  req.body.month = months[dateInput.getUTCMonth()];
+  
+  req.body.year = dateInput.getUTCFullYear();
+  
+  req.body.weekday = days[dateInput.getUTCDay()];
+
+  req.body.weekdate = dateInput.getUTCDate();
+
+  req.body.endDay = new Date(dateInput.setUTCDate(req.body.weekdate + 7)).toUTCString();
+
   Week.create(req.body, (error, result) => {
     // res.send(result);
     res.redirect("/weeks");
