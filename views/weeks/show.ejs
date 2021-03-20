@@ -1,45 +1,37 @@
-<!DOCTYPE html>
-<html>
+<%- include('../partials/header') %>
 
-<head>
-  <meta charset="utf-8">
-  <title></title>
-</head>
+<h1>Weeks show page</h1>
+<div>
+  Start Day: <%= week.startDay %><br>
+  Month: <%= week.month %><br>
+  Year: <%= week.year %><br>
+  Weekday: <%= week.weekday %><br>
+  Date: <%= week.weekdate %><br>
+  End Day: <%= week.endDay %>
+</div>
 
-<body>
-  <h1>Weeks show page</h1>
-  <div>
-    Start Day: <%= week.startDay %><br>
-    Month: <%= week.month %><br>
-    Year: <%= week.year %><br>
-    Weekday: <%= week.weekday %><br>
-    Date: <%= week.weekdate %><br>
-    End Day: <%= week.endDay %>
-  </div>
-  
-  <% days.forEach(function(day) { %>
-    <div class="day">
-      <h2><%= day.weekday %> <%= day.weekdate %></h2>
-      <div class="entries">
-        <ul>
-          <% day.entries.forEach(function(entry) { %>
-            <li>Content: <%= entry.content %>, Category: <%= entry.category %>
-              <a href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>/edit">Edit</a>
-              <form action="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>?_method=DELETE" method="post">
-                <button type="submit">Delete</button>
-              </form>
-            </li>
-          <% }); %>
-        </ul>
+<% days.forEach(function(day) { %>
+  <div class="day">
+    <h2><%= day.weekday %> <%= day.weekdate %></h2>
+    <div class="entries">
+      <ul>
+        <% day.entries.forEach(function(entry) { %>
+          <li>Content: <%= entry.content %>, Category: <%= entry.category %>
+            <a href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>/edit">Edit</a>
+            <form action="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>?_method=DELETE" method="post">
+              <button type="submit">Delete</button>
+            </form>
+          </li>
+        <% }); %>
+      </ul>
 
-        <a href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/new">New Entry</a>
-      </div>
+      <a href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/new">New Entry</a>
     </div>
-  <% }); %>
+  </div>
+<% }); %>
 
-  <nav>
-    <a href="/weeks">Back to Weeks Index</a>
-  </nav>
-</body>
+<nav>
+  <a href="/weeks">Back to Weeks Index</a>
+</nav>
 
-</html>
+  <%- include('../partials/footer') %>

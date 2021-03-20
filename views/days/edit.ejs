@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Edit Entry</h1>
-    <form action="/weeks/<%= weekId %>/days/<%= dayId %>/entries/<%= entryId %>?_method=PUT" method="POST">
-        <label>
-            Updated Entry: 
-            <input type="text" name="content">
-        </label>
-        <label>
-            Updated Category: 
-            <input type="text" name="category">
-        </label>
-        <input type="submit" name="" value="Add Entry" />
-    </form>
-</body>
-</html>
+<%- include('../partials/header') %>
+
+<h1>Edit Entry</h1>
+<form action="/weeks/<%= weekId %>/days/<%= dayId %>/entries/<%= entryId %>?_method=PUT" method="POST">
+    <label>
+        Updated Entry: 
+        <input type="text" name="content">
+    </label>
+    <label>
+        Updated Category: 
+        <input type="text" name="category">
+    </label>
+    <input type="submit" name="" value="Add Entry" />
+</form>
+
+<%- include('../partials/footer') %>

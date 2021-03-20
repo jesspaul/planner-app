@@ -1,24 +1,17 @@
-<!DOCTYPE html>
-<html>
+<%- include('../partials/header') %>
 
-<head>
-  <meta charset="utf-8">
-  <title></title>
-</head>
+<h1>New Week page</h1>
+<form action="/weeks" method="POST">
+  <label>
+    First Day:
+    <input type="date" name="startDay" /><br />
+  </label>
+  <label>
+    Habits: 
+    <input type="checkbox" name="habit1" id="habit1">
+    <label for="#habit1">habit1</label>
+  </label>
+  <input type="submit" name="" value="Create Week" />
+</form>
 
-<body>
-  <h1>New Week page</h1>
-  <form action="/weeks" method="POST">
-    <label>
-      First Day:
-      <input type="date" name="startDay" /><br />
-    </label>
-    <label>
-      Habits: 
-      <input type="checkbox" name="habit1" id="habit1">
-      <label for="#habit1">habit1</label>
-    </label>
-    <input type="submit" name="" value="Create Week" />
-  </form>
-</body>
-</html>
+  <%- include('../partials/footer') %>
