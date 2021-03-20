@@ -30,15 +30,12 @@ function create(req, res) {
 
 // DELETE
 function deleteEntry(req, res) {
-  console.log(`DELETE FUNCTION: day id is ${req.params.dayId}`);
-  console.log(`DELETE FUNCTION: entry id is ${req.params.entryId}`);
-  
   Week.find({}, function(err, weeks) {
     weeks.forEach(function(week) {
       week.days.forEach(function(day) {
         day.entries.forEach(function(entry) {
           if (entry._id == req.params.entryId) {
-            let entryIdx = day.entries.indexOf(entry._id);
+            let entryIdx = day.entries.indexOf(entry);
             day.entries.splice(entryIdx, 1);
           };
         });
