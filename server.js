@@ -15,7 +15,7 @@ app.use(methodOverride("_method"));
 
 // mount routes
 app.use("/weeks", weeksRouter);
-app.use("/", daysRouter);
+app.use("/days", daysRouter);
 
 app.get("/", (req, res) => {
   res.redirect("/weeks");

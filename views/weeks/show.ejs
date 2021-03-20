@@ -18,12 +18,20 @@
   </div>
   
   <% days.forEach(function(day) { %>
+    <% console.log(`day id is ${day._id}`); %>
     <div class="day">
       <h2><%= day.weekday %> <%= day.weekdate %></h2>
       <div class="entries">
         <ul>
           <% day.entries.forEach(function(entry) { %>
-            <li><%= entry.content %></li>
+            <li><%= entry.content %>
+              <% console.log(`entry id is ${entry._id}`); %>
+
+              <a href="/days/<%= day._id %>/entries/<%= entry._id %>/edit">Edit</a><br><br>
+              <form action="/days/<%= day._id %>/entries/<%= entry._id %>?_method=DELETE" method="post">
+                <button type="submit">X</button>
+              </form>
+            </li>
           <% }); %>
         </ul>
 

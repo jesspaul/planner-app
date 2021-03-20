@@ -10,12 +10,10 @@ function newEntry(req, res) {
 
 // CREATE
 function create(req, res) {
-  console.log(req.params.id);
   Week.find({}, function(err, weeks) {
     weeks.forEach(function(week) {
       week.days.forEach(function(day) {
         if (day._id == req.params.id) {
-          console.log(`this day matches with id ${day._id} and it is ${day.weekday} ${day.weekdate}`);
           let entryObj = {
             content: req.body.content,
             category: req.body.category
@@ -30,22 +28,39 @@ function create(req, res) {
   });
 }
 
-// // DELETE
-// function deleteWeek(req, res) {
-//   // res.send('deleting...')
-//   Week.deleteOne({ _id: req.params.id }, function(err) {
-//     res.redirect("/weeks");
-//   })
-// }
+// DELETE
+function deleteEntry(req, res) {
+  console.log(`DELETE FUNCTION: day id is ${req.params.dayId}`);
+  console.log(`DELETE FUNCTION: entry id is ${req.params.entryId}`);
+  
+  Week.find({}, function(err, weeks) {
+    weeks.forEach(function(week) {
+      week.days.forEach(function(day) {
+        day.entries.forEach(function(entry) {
+          if (entry._id == req.params.entryId) {
+            let entryIdx = day.entries.indexOf(entry._id);
+            day.entries.splice(entryIdx, 1);
+          };
+        });
+      });
+      week.save(function(err) {
+        res.redirect("/weeks");
+      });
+    });
+  });
+}
+            
+// EDIT
+function edit(req, res) {
+  console.log(`EDIT FUNCTION: day id is ${req.params.dayId}`);
+  console.log(`EDIT FUNCTION: entry id is ${req.params.entryId}`);
 
-// // EDIT
-// function edit(req, res) {
-//   Week.findById(req.params.id, (err, foundWeek) => {
-//     res.render("edit.ejs", {
-//       week: foundWeek
-//     });
-//   });
-// }
+  // Week.findById(req.params.id, (err, foundWeek) => {
+  //   res.render("edit.ejs", {
+  //     week: foundWeek
+  //   });
+  // });
+}
 
 // // PUT/UPDATE
 // function update(req, res) {
@@ -72,8 +87,8 @@ function create(req, res) {
   module.exports = {
     new: newEntry,
     create,
-    // delete: deleteWeek,
-    // edit,
+    delete: deleteEntry,
+    edit,
     // update
   }
   
