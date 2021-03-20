@@ -4,7 +4,8 @@ const Week = require("../models/week.js");
 // NEW
 function newEntry(req, res) {
   res.render("days/new.ejs", {
-    dayId: req.params.id
+    weekId: req.params.weekId,
+    dayId: req.params.dayId
   });
 }
 
@@ -13,7 +14,7 @@ function create(req, res) {
   Week.find({}, function(err, weeks) {
     weeks.forEach(function(week) {
       week.days.forEach(function(day) {
-        if (day._id == req.params.id) {
+        if (day._id == req.params.dayId) {
           let entryObj = {
             content: req.body.content,
             category: req.body.category
@@ -22,7 +23,7 @@ function create(req, res) {
         };
       });
       week.save(function(err) {
-        res.redirect("/weeks");
+        res.redirect(`/weeks/${week._id}`);
       });
     })
   });
@@ -41,7 +42,7 @@ function deleteEntry(req, res) {
         });
       });
       week.save(function(err) {
-        res.redirect("/weeks");
+        res.redirect(`/weeks/${week._id}`);
       });
     });
   });
@@ -49,10 +50,8 @@ function deleteEntry(req, res) {
             
 // EDIT
 function edit(req, res) {
-  console.log(`EDIT FUNCTION: day id is ${req.params.dayId}`);
-  console.log(`EDIT FUNCTION: entry id is ${req.params.entryId}`);
-
   res.render('days/edit.ejs', {
+    weekId: req.params.weekId,
     dayId: req.params.dayId,
     entryId: req.params.entryId
   });
@@ -64,21 +63,19 @@ function update(req, res) {
     content: req.body.content,
     category: req.body.category
   };
-  console.log(updatedEntry);
 
   Week.find({}, function(err, weeks) {
     weeks.forEach(function(week) {
       week.days.forEach(function(day) {
         day.entries.forEach(function(entry) {
           if (entry._id == req.params.entryId) {
-
             let entryIdx = day.entries.indexOf(entry);
             day.entries.splice(entryIdx, 1, updatedEntry);
           };
         });
       });
       week.save(function(err) {
-        res.redirect("/weeks");
+        res.redirect(`/weeks/${week._id}`);
       });
     });
   });

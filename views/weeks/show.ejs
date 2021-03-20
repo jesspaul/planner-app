@@ -24,15 +24,15 @@
         <ul>
           <% day.entries.forEach(function(entry) { %>
             <li>Content: <%= entry.content %>, Category: <%= entry.category %>
-              <a href="/days/<%= day._id %>/entries/<%= entry._id %>/edit">Edit</a>
-              <form action="/days/<%= day._id %>/entries/<%= entry._id %>?_method=DELETE" method="post">
-                <button type="submit">Delete <%= entry.content %></button>
+              <a href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>/edit">Edit</a>
+              <form action="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>?_method=DELETE" method="post">
+                <button type="submit">Delete</button>
               </form>
             </li>
           <% }); %>
         </ul>
 
-        <a href="/days/<%= day._id %>/entries/new">New</a>
+        <a href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/new">New Entry</a>
       </div>
     </div>
   <% }); %>

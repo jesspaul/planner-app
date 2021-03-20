@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Edit Entry</h1>
-    <form action="/days/<%= dayId %>/entries/<%= entryId %>?_method=PUT" method="POST">
+    <form action="/weeks/<%= weekId %>/days/<%= dayId %>/entries/<%= entryId %>?_method=PUT" method="POST">
         <label>
             Updated Entry: 
             <input type="text" name="content">
