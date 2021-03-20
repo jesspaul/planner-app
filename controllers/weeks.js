@@ -29,11 +29,25 @@ function create(req, res) {
 
   req.body.weekdate = dateInput.getUTCDate();
 
-  req.body.endDay = new Date(dateInput.setUTCDate(req.body.weekdate + 7)).toUTCString();
+  req.body.endDay = new Date(dateInput.setUTCDate(req.body.weekdate + 6)).toUTCString();
 
-  Week.create(req.body, (error, result) => {
-    // res.send(result);
-    res.redirect("/weeks");
+  Week.create(req.body, (error, newWeek) => {
+    Week.findById(newWeek._id, function(err, foundWeek) {
+      for (let i = 0; i < 7; i++) {
+        let newDay = new Date(dateInput.setUTCDate(req.body.weekdate + i));
+        let dayObj = {
+          month: months[newDay.getUTCMonth()],
+          year: newDay.getUTCFullYear(),
+          weekday: days[newDay.getUTCDay()],
+          weekdate: newDay.getUTCDate(),
+        };
+        foundWeek.days.push(dayObj);
+      };
+      foundWeek.save(function(err) {
+        console.log(foundWeek.days);
+        res.redirect("/weeks");
+      });
+    });
   });
 }
 
@@ -58,7 +72,6 @@ function deleteWeek(req, res) {
 // /weeks/5e5a93cd12675b4c0efcb17e/edit
 function edit(req, res) {
   Week.findById(req.params.id, (err, foundWeek) => {
-    console.log("foundWeek", foundWeek);
     res.render("edit.ejs", {
       week: foundWeek
     });

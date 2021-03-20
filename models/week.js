@@ -1,23 +1,41 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const goalSchema = new mongoose.Schema({
+const goalSchema = new Schema({
   name: String,
 }, { timestamps: true });
 
-const habitSchema = new mongoose.Schema({
+const habitSchema = new Schema({
   name: String,
   date: Date,
   complete: Boolean,
 }, { timestamps: true });
 
-const weekSchema = new mongoose.Schema({
+const entrySchema = new Schema({
+  content: String,
+  category: String,
+}, { timestamps: true })
+
+const daySchema = new Schema({
+  month: String,
+  year: Number,
+  weekday: String,
+  weekdate: Number,
+  entries: [entrySchema],
+  week: {
+    type: Schema.Types.ObjectId,
+    ref: 'Week'
+  }
+}, { timestamps: true });
+
+const weekSchema = new Schema({
   startDay: String,
   endDay: String,
   month: String,
   year: Number,
   weekday: String,
   weekdate: Number,
-  // days: [],
+  days: [daySchema],
   habits: [habitSchema],
   goals: [goalSchema],
 }, { timestamps: true });

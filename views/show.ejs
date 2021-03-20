@@ -8,12 +8,29 @@
 
 <body>
   <h1>Weeks show page</h1>
-  The <%=week.name; %> is <%=week.color; %>.
-  <% if(week.readyToEat === true){ %>
-  It is ready to eat
-  <% } else { %>
-  It is not ready to eat
-  <% } %>
+  <div>
+    Start Day: <%= week.startDay %><br>
+    Month: <%= week.month %><br>
+    Year: <%= week.year %><br>
+    Weekday: <%= week.weekday %><br>
+    Date: <%= week.weekdate %><br>
+    End Day: <%= week.endDay %>
+  </div>
+  
+  <% days.forEach(function(day) { %>
+    <div class="day">
+      <h2><%= day.weekday %></h2>
+      <h2><%= day.weekdate %></h2>
+      <div class="entries">
+        <ul>
+          <% entries.forEach(function(entry) { %>
+            <li><%= entry.text %></li>
+          <% }); %>
+        </ul>
+      </div>
+    </div>
+  <% }); %>
+
   <nav>
     <a href="/weeks">Back to Weeks Index</a>
   </nav>
