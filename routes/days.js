@@ -6,7 +6,7 @@ router.get('/:id/entries/new', daysCtrl.new);
 router.post('/:id/entries', daysCtrl.create);
 router.delete('/:dayId/entries/:entryId', daysCtrl.delete);
 router.get('/:dayId/entries/:entryId/edit', daysCtrl.edit);
-// router.put('/:id', daysCtrl.update);
+router.put('/:dayId/entries/:entryId', daysCtrl.update);
 // router.get('/:id', daysCtrl.show);
 
 module.exports = router;
