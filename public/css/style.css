@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Helvetica;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav li {
+    margin: 10px;
+    display: inline;
+}
+
+main {
+    margin: 20px;
+}
+
+h1 {
+    color: red;
+}
