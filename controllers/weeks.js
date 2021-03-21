@@ -102,60 +102,6 @@ function update(req, res) {
     );
   }
 
-  function newGoal(req, res) {
-    res.render('weeks/newgoal.ejs', {
-      weekId: req.params.id
-    });
-  }
-
-  function createGoal(req, res) {
-    Week.findById(req.params.id, function(err, foundWeek) {
-      foundWeek.goals.push(req.body);
-      foundWeek.save(function(err) {
-        res.redirect(`/weeks/${foundWeek._id}`);
-      });
-    });
-  }
-
-  function editGoal(req, res) {
-    Week.findById(req.params.id, (err, foundWeek) => {
-      res.render("weeks/editgoal.ejs", {
-        week: foundWeek,
-        goalId: req.params.goalId
-      });
-    });
-  }
-
-  function updateGoal(req, res) {
-    Week.findById(req.params.id, function(err, foundWeek) {
-      foundWeek.goals.forEach(function(goal) {
-        if (goal._id == req.params.goalId) {
-          let goalIdx = foundWeek.goals.indexOf(goal);
-          foundWeek.goals.splice(goalIdx, 1, req.body);
-        }
-      });
-
-      foundWeek.save(function(err) {
-        res.redirect(`/weeks/${foundWeek._id}`);
-      });
-    });
-  }
-
-  function deleteGoal(req, res) {
-    Week.findById(req.params.id, function(err, foundWeek) {
-      foundWeek.goals.forEach(function(goal) {
-        if (goal._id == req.params.goalId) {
-          let goalIdx = foundWeek.goals.indexOf(goal);
-          foundWeek.goals.splice(goalIdx, 1);
-        }
-      });
-
-      foundWeek.save(function(err) {
-        res.redirect(`/weeks/${foundWeek._id}`);
-      });
-    });
-  }
-  
   module.exports = {
     index,
     new: newWeek,
@@ -164,10 +110,5 @@ function update(req, res) {
     delete: deleteWeek,
     edit,
     update,
-    newGoal,
-    createGoal,
-    editGoal,
-    updateGoal,
-    deleteGoal,
   }
   
