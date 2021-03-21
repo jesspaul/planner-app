@@ -6,7 +6,7 @@ const goalSchema = new Schema({
 }, { timestamps: true });
 
 const habitSchema = new Schema({
-  name: String,
+  content: String,
   date: Date,
   complete: Boolean,
 }, { timestamps: true });

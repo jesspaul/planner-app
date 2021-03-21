@@ -58,6 +58,7 @@ function show(req, res) {
       week: foundWeek,
       days: foundWeek.days,
       goals: foundWeek.goals,
+      habits: foundWeek.habits,
     });
   });
 }

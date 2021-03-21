@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<h1>Edit Habit</h1>
+<form action="/weeks/<%= week._id %>/habits/<%= habitId %>?_method=PUT" method="POST">
+    <label>
+        Updated Habit: 
+        <input type="text" name="content">
+    </label>
+    <label>
+        Updated Category: 
+        <input type="text" name="category">
+    </label>
+    <input type="submit" name="" value="Add Entry" />
+</form>
+
+<%- include('../partials/footer') %>
