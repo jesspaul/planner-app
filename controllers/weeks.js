@@ -120,7 +120,8 @@ function update(req, res) {
   function editGoal(req, res) {
     Week.findById(req.params.id, (err, foundWeek) => {
       res.render("weeks/editgoal.ejs", {
-        week: foundWeek
+        week: foundWeek,
+        goalId: req.params.goalId
       });
     });
   }
@@ -131,6 +132,21 @@ function update(req, res) {
         if (goal._id == req.params.goalId) {
           let goalIdx = foundWeek.goals.indexOf(goal);
           foundWeek.goals.splice(goalIdx, 1, req.body);
+        }
+      });
+
+      foundWeek.save(function(err) {
+        res.redirect(`/weeks/${foundWeek._id}`);
+      });
+    });
+  }
+
+  function deleteGoal(req, res) {
+    Week.findById(req.params.id, function(err, foundWeek) {
+      foundWeek.goals.forEach(function(goal) {
+        if (goal._id == req.params.goalId) {
+          let goalIdx = foundWeek.goals.indexOf(goal);
+          foundWeek.goals.splice(goalIdx, 1);
         }
       });
 
@@ -152,5 +168,6 @@ function update(req, res) {
     createGoal,
     editGoal,
     updateGoal,
+    deleteGoal,
   }
   

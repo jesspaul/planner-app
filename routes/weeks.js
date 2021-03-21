@@ -12,6 +12,7 @@ router.get('/:id', weeksCtrl.show);
 router.get('/:id/goals/new', weeksCtrl.newGoal);
 router.post('/:id/goals', weeksCtrl.createGoal);
 router.get('/:id/goals/:goalId/edit', weeksCtrl.editGoal);
-router.put('/id/goals/:goalId', weeksCtrl.updateGoal);
+router.put('/:id/goals/:goalId', weeksCtrl.updateGoal);
+router.delete('/:id/goals/:goalId', weeksCtrl.deleteGoal);
 
 module.exports = router;
