@@ -4,8 +4,11 @@
 
 <div class="week-view">
   <% days.forEach(function(day) { %>
-    <div class="day">
-      <h2><%= day.weekday %> <%= day.weekdate %></h2>
+    <div class="day <%= day.weekday.toLowerCase() %>">
+      <div class="date-header">
+        <h2 class="weekday"><%= day.weekday %></h2>
+        <h2 class="weekdate"><%= day.weekdate %></h2>
+      </div>
       <div class="entries">
         <ul>
           <% day.entries.forEach(function(entry) { %>
@@ -24,36 +27,38 @@
   <% }); %>
 </div>
 
-<div class="habits">
-  <h2>Habits</h2>
-  <ul>
-    <% habits.forEach(function(habit) { %>
-      <li>
-        Content: <%= habit.content %>, Complete: <%= habit.complete ? 'Yes' : 'No' %>
-        <a href="/weeks/<%= week._id %>/habits/<%= habit._id %>/edit">Edit</a>
-            <form action="/weeks/<%= week._id %>/habits/<%= habit._id %>?_method=DELETE" method="post">
-              <button type="submit">Delete</button>
-            </form>
-      </li>
-    <% }); %>
-  </ul>
-  <a href="/weeks/<%= week._id %>/habits/new">New Habit</a>
-</div>
-
-<div class="goals">
-  <h2>Goals</h2>
-  <ul>
-    <% goals.forEach(function(goal) { %>
-      <li>
-        Content: <%= goal.content %>
-        <a href="/weeks/<%= week._id %>/goals/<%= goal._id %>/edit">Edit</a>
-            <form action="/weeks/<%= week._id %>/goals/<%= goal._id %>?_method=DELETE" method="post">
-              <button type="submit">Delete</button>
-            </form>
-      </li>
-    <% }); %>
-  </ul>
-  <a href="/weeks/<%= week._id %>/goals/new">New Goal</a>
+<div class="trackers">
+  <div class="section">
+    <h2>Habits</h2>
+    <ul>
+      <% habits.forEach(function(habit) { %>
+        <li>
+          Content: <%= habit.content %>, Complete: <%= habit.complete ? 'Yes' : 'No' %>
+          <a href="/weeks/<%= week._id %>/habits/<%= habit._id %>/edit">Edit</a>
+              <form action="/weeks/<%= week._id %>/habits/<%= habit._id %>?_method=DELETE" method="post">
+                <button type="submit">Delete</button>
+              </form>
+        </li>
+      <% }); %>
+    </ul>
+    <a href="/weeks/<%= week._id %>/habits/new">New Habit</a>
+  </div>
+  
+  <div class="section">
+    <h2>Goals</h2>
+    <ul>
+      <% goals.forEach(function(goal) { %>
+        <li>
+          Content: <%= goal.content %>
+          <a href="/weeks/<%= week._id %>/goals/<%= goal._id %>/edit">Edit</a>
+              <form action="/weeks/<%= week._id %>/goals/<%= goal._id %>?_method=DELETE" method="post">
+                <button type="submit">Delete</button>
+              </form>
+        </li>
+      <% }); %>
+    </ul>
+    <a href="/weeks/<%= week._id %>/goals/new">New Goal</a>
+  </div>
 </div>
 
   <%- include('../partials/footer') %>
