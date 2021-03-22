@@ -33,7 +33,6 @@ function create(req, res) {
   req.body.weekday = days[dateInput.getUTCDay()];
   req.body.weekdate = dateInput.getUTCDate();
   req.body.endDay = new Date(dateInput.setUTCDate(req.body.weekdate + 6)).toUTCString();
-
   
   Week.create(req.body, (error, newWeek) => {
     Week.findById(newWeek._id, function(err, foundWeek) {
