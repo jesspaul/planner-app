@@ -80,10 +80,15 @@ function deleteWeek(req, res) {
 // EDIT
 // /weeks/5e5a93cd12675b4c0efcb17e/edit
 function edit(req, res) {
-  Week.findById(req.params.id, (err, foundWeek) => {
-    res.render("weeks/edit.ejs", {
-      week: foundWeek,
-      title: 'Edit Week'
+  Week.find({}, function(err, weeks) {
+    weeks.forEach(function(week) {
+      if (week._id == req.params.id) {
+        res.render("weeks/edit.ejs", {
+          weeks,
+          editWeek: week,
+          title: 'Edit Week'
+        });
+      }
     });
   });
 }

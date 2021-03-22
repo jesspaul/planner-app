@@ -1,15 +1,21 @@
 <%- include('../partials/header') %>
 
 <form action="/weeks/<%= weekId %>/days/<%= dayId %>/entries/<%= entryId %>?_method=PUT" method="POST">
-    <label>
-        Updated Entry: 
-        <input type="text" name="content">
-    </label>
-    <label>
-        Updated Category: 
-        <input type="text" name="category">
-    </label>
-    <input type="submit" name="" value="Add Entry" />
+    <div>
+        <label>
+            Updated Entry: 
+            <textarea name="content"></textarea>
+        </label>
+    </div>
+    <div>
+        <label>
+            Updated Category: 
+            <input type="text" name="category">
+        </label>
+    </div>
+    <div>
+        <input type="submit" name="" value="Update Entry" />
+    </div>
 </form>
 
 <%- include('../partials/footer') %>

@@ -3,26 +3,18 @@
 <ul>
   <% weeks.forEach(function(week) { %>
   <li>
-    <a href="/weeks/<%= week._id; %>">Week of <%= week.month %> <%= week.weekdate %> <%= week.year %></a><br>
-    Start Day: <%= week.startDay %><br>
-    Month: <%= week.month %><br>
-    Year: <%= week.year %><br>
-    Weekday: <%= week.weekday %><br>
-    Date: <%= week.weekdate %><br>
-    End Day: <%= week.endDay %>
+    <a href="/weeks/<%= week._id; %>">Week of <%= week.month %> <%= week.weekdate %> <%= week.year %></a>
 
-    <!-- ADD DELETE FORM HERE -->
+    <a class="submit-icon" href="/weeks/<%= week._id%>/edit"><span title="Edit Week"><i class="fas fa-edit"></i></span></a>
     <form action="/weeks/<%= week._id%>?_method=DELETE" method="POST">
-      <input type="submit" value="DELETE" />
+      <button class="submit-icon" type="submit"><span title="Delete Week"><i class="fas fa-trash-alt"></i></span></button>
     </form>
-    <!-- weeks/5e5a93cd12675b4c0efcb17e/edit -->
-    <a href="/weeks/<%= week._id%>/edit">Edit</a>
   </li>
   <% }); %>
 </ul>
 
-<br><br>
-
-<a href="/weeks/new">Add New Week</a>
+<div class="add-new">
+  <a class="submit-icon" href="/weeks/new"><i class="fas fa-plus"></i> Add New</a>
+</div>
 
   <%- include('../partials/footer') %>

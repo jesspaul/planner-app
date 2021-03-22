@@ -9,29 +9,29 @@
     <h3>Habits: </h3>
     
     <% let habitCollection = []; %>
+
     <% weeks.forEach(function(week) { %>
-    <%   week.habits.forEach(function(habit) { %>
-    <%     if (!habitCollection.includes(habit.content)) { %>
-    <%       habitCollection.push(habit); %>
-    <%     } %>
-    <%   }); %>
-    <%   habitCollection.sort(function(a, b) { %>
-    <%     a = a.content %>
-    <%     b = b.content %>
-    <%     if (a < b) { %>
-    <%       return -1; %>
-    <%     } else if (a > b) { %>
-    <%       return 1; %>
-    <%     } else { %>
-    <%       return 0; %>
-    <%     } %>
-    <%   }); %>
+      <% week.habits.forEach(function(habit) { %>
+        <% if (!habitCollection.includes(habit.content)) { %>
+          <% habitCollection.push(habit.content); %>
+        <% } %>
+      <% }); %>
+          
+      <% habitCollection.sort(function(a, b) { %>
+        <% if (a < b) { %>
+          <% return -1; %>
+        <% } else if (a > b) { %>
+          <% return 1; %>
+        <% } else { %>
+          <% return 0; %>
+        <% } %>
+      <% }); %>
     <% }); %>
 
     <% habitCollection.forEach(function(habit) { %>
       <div class="habit-select">
-        <label for="<%= habit.content %>Id"><%= habit.content %></label>
-        <input type="checkbox" name="habitList" value="<%= habit.content %>" id="<%= habit.content %>Id">
+        <label for="<%= habit %>Id"><%= habit %></label>
+        <input type="checkbox" name="habitList" value="<%= habit %>" id="<%= habit %>Id">
       </div>
     <% }) %>
 

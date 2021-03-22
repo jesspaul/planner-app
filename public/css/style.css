@@ -12,6 +12,7 @@
 body {
     margin: 0;
     font-family: Helvetica;
+    word-wrap: break-word;
 }
 
 nav {
@@ -73,7 +74,7 @@ form {
 }
 
 .saturday, .sunday {
-    height: 255px;
+    height: 297px;
 }
 
 .saturday {
@@ -103,6 +104,10 @@ form {
     padding-left: 12px;
 }
 
+.buttons {
+    padding-left: 15px;
+}
+
 .submit-icon {
     background: none;
     border: none;
@@ -116,18 +121,20 @@ form {
 }
 
 .trackers {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    background-color: tan;
-    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: orange;
 }
 
-.section {
+.tracker-section {
+    background-color: thistle;
+    padding: 20px;
+    display: inline;
     min-width: 500px;
-    max-height: 300px;
-    overflow: auto;
-    background-color: wheat;
+}
+
+.add-new {
+    margin-top: 8px;
 }
 
 table, th, td {

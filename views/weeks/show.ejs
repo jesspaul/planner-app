@@ -15,14 +15,18 @@
           <ul>
             <% day.entries.forEach(function(entry) { %>
               <li>Content: <%= entry.content %>, Category: <%= entry.category %>
-                <a class="submit-icon" href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>/edit"><span title="Edit Entry"><i class="fas fa-edit"></i></span></a>
-                <form action="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>?_method=DELETE" method="post">
-                  <button class="submit-icon" type="submit"><span title="Delete Entry"><i class="fas fa-trash-alt"></i></span></button>
-                </form>
+                <div class="buttons">
+                  <a class="submit-icon" href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>/edit"><span title="Edit Entry"><i class="fas fa-edit"></i></span></a>
+                  <form action="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>?_method=DELETE" method="post">
+                    <button class="submit-icon" type="submit"><span title="Delete Entry"><i class="fas fa-trash-alt"></i></span></button>
+                  </form>
+                </div>
               </li>
             <% }); %>
           </ul>
-          <a class="submit-icon" href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/new"><i class="fas fa-plus"></i> Add New</a>
+          <div class="add-new">
+            <a class="submit-icon" href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/new"><i class="fas fa-plus"></i> Add New</a>
+          </div>
         </div>
 
         <div class="habits">
@@ -47,7 +51,7 @@
 </div>
 
 <div class="trackers">
-  <div class="section">
+  <div class="tracker-section">
     <h2>Habit Tracker</h2>
     <table>
       <tr>
@@ -80,11 +84,12 @@
         </tr>
       <% }); %>
     </table>
-          
-    <a class="submit-icon" href="/weeks/<%= week._id %>/habits/new"><i class="fas fa-plus"></i> Add New</a>
+    <div class="add-new">
+      <a class="submit-icon" href="/weeks/<%= week._id %>/habits/new"><i class="fas fa-plus"></i> Add New</a>
+    </div>
   </div>
   
-  <div class="section">
+  <div class="tracker-section">
     <h2>Weekly Goals</h2>
     <ul>
       <% goals.forEach(function(goal) { %>
@@ -97,7 +102,9 @@
         </li>
       <% }); %>
     </ul>
-    <a class="submit-icon" href="/weeks/<%= week._id %>/goals/new"><i class="fas fa-plus"></i> Add New</a>
+    <div class="add-new">
+      <a class="submit-icon" href="/weeks/<%= week._id %>/goals/new"><i class="fas fa-plus"></i> Add New</a>
+    </div>
   </div>
 </div>
 
