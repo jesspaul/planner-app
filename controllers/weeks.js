@@ -14,30 +14,32 @@ function index(req, res) {
 
 // NEW
 function newWeek(req, res) {
-  res.render("weeks/new.ejs", {
-    title: 'New Week'
+  Week.find({}, (error, weeks) => {
+    res.render("weeks/new.ejs", {
+      title: 'New Week',
+      weeks
+    });
   });
 }
 
 // CREATE
 function create(req, res) {
   const dateInput = new Date(req.body.startDay);
-
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   
   req.body.month = months[dateInput.getUTCMonth()];
-  
   req.body.year = dateInput.getUTCFullYear();
-  
   req.body.weekday = days[dateInput.getUTCDay()];
-
   req.body.weekdate = dateInput.getUTCDate();
-
   req.body.endDay = new Date(dateInput.setUTCDate(req.body.weekdate + 6)).toUTCString();
 
+  
   Week.create(req.body, (error, newWeek) => {
     Week.findById(newWeek._id, function(err, foundWeek) {
+      req.body.habitList.forEach(function(habit) {
+        foundWeek.habits.push({content: habit});
+      });
       for (let i = 0; i < 7; i++) {
         let newDay = new Date(dateInput.setUTCDate(req.body.weekdate + i));
         let dayObj = {

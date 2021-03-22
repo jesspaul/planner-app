@@ -2,13 +2,38 @@
 
 <form action="/weeks" method="POST">
   <label>
-    First Day:
-    <input type="date" name="startDay" /><br />
+    <h3>First Day:</h3>
+    <input type="date" name="startDay" required /><br />
   </label>
   <label>
-    Habits: 
-    <input type="checkbox" name="habit1" id="habit1">
-    <label for="#habit1">habit1</label>
+    <h3>Habits: </h3>
+    
+    <% let habitCollection = []; %>
+
+    <% weeks.forEach(function(week) { %>
+    <%   week.habits.forEach(function(habit) { %>
+    <%     if (!habitCollection.includes(habit)) { %>
+    <%       habitCollection.push(habit); %>
+    <%     } %>
+    <%   }); %>
+    <%   habitCollection.sort(function(a, b) { %>
+    <%     if (a < b) { %>
+    <%       return -1; %>
+    <%     } else if (a > b) { %>
+    <%       return 1; %>
+    <%     } else { %>
+    <%       return 0; %>
+    <%     } %>
+    <%   }); %>
+    <% }); %>
+
+    <% habitCollection.forEach(function(habit) { %>
+      <div class="habit-select">
+        <label for="<%= habit.content %>Id"><%= habit.content %></label>
+        <input type="checkbox" name="habitList" value="<%= habit.content %>" id="<%= habit.content %>Id">
+      </div>
+    <% }) %>
+
   </label>
   <input type="submit" name="" value="Create Week" />
 </form>
