@@ -9,10 +9,8 @@
     <h3>Habits: </h3>
     
     <% let habitCollection = []; %>
-
     <% weeks.forEach(function(week) { %>
     <%   week.habits.forEach(function(habit) { %>
-    <%   console.log(habit) %>
     <%     if (!habitCollection.includes(habit.content)) { %>
     <%       habitCollection.push(habit); %>
     <%     } %>

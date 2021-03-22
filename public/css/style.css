@@ -1,5 +1,12 @@
+:root {
+    --link-color: purple;
+    --primary-accent: orchid;
+    --secondary-accent: palegreen;
+}
+
 * {
     box-sizing: border-box;
+    margin: 0;
 }
 
 body {
@@ -11,8 +18,10 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
+    padding: 10px;
     display: flex;
     justify-content: flex-end;
+    background-color: var(--primary-accent);
 }
 
 nav li {
@@ -21,11 +30,28 @@ nav li {
 }
 
 main {
-    margin: 10px;
+    margin: 50px 10px 0 10px;
 }
 
 h1 {
     color: red;
+    margin-bottom: 15px;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+a {
+    color: var(--link-color)
+}
+
+form {
+    display: inline;
 }
 
 .week-view {
@@ -39,7 +65,6 @@ h1 {
 
 .day {
     background-color: skyblue;
-    padding: 10px;
     min-width: 200px;
     max-height: 600px;
     min-height: 255px;
@@ -47,9 +72,12 @@ h1 {
     grid-row: 1 / 3;
 }
 
+.saturday, .sunday {
+    height: 255px;
+}
+
 .saturday {
     grid-row: 1 / 2;
-    
 }
 
 .sunday {
@@ -59,10 +87,32 @@ h1 {
 .date-header {
     display: flex;
     justify-content: space-between;
+    background-color: var(--secondary-accent);
+    padding: 5px 10px;
 }
 
-.weekday, .weekdate {
-    margin: 0;
+.day-content {
+    padding: 10px;
+}
+
+.entries {
+    margin-bottom: 25px;
+}
+
+.entries ul {
+    padding-left: 12px;
+}
+
+.submit-icon {
+    background: none;
+    border: none;
+    color: var(--link-color);
+    display: inline;
+    font-size: 16px;
+}
+
+.submit-icon:hover {
+    cursor: pointer;
 }
 
 .trackers {
@@ -70,6 +120,7 @@ h1 {
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     background-color: tan;
+    padding: 20px 0;
 }
 
 .section {
@@ -79,6 +130,31 @@ h1 {
     background-color: wheat;
 }
 
-form {
-    display: inline;
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    min-width: 55px;
+    text-align: center;
+}
+
+th, .habit-table-label {
+    padding: 10px;
+}
+
+.habit-table-label {
+    text-align: left;
+    font-weight: bold;
+}
+
+.table-body {
+    font-size: 22px;
+}
+
+.no-border {
+    border-right: none;
+    border-left: none;
+}
+
+.checked {
+    background-color: var(--primary-accent);
 }

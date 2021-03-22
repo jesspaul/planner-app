@@ -3,49 +3,56 @@
 <div class="week-view">
   <% days.forEach(function(day) { %>
     <div class="day <%= day.weekday.toLowerCase() %>">
+
       <div class="date-header">
         <h2 class="weekday"><%= day.weekday %></h2>
         <h2 class="weekdate"><%= day.weekdate %></h2>
       </div>
-      <div class="entries">
-        <ul>
-          <% day.entries.forEach(function(entry) { %>
-            <li>Content: <%= entry.content %>, Category: <%= entry.category %>
-              <a href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>/edit">Edit</a>
-              <form action="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>?_method=DELETE" method="post">
-                <button type="submit">Delete</button>
-              </form>
-            </li>
-          <% }); %>
-        </ul>
-        <a href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/new">New Entry</a>
-      </div>
-      <div class="habits">
-        <h3>Habits</h3>
 
-        <% habits.forEach(function(habit) { %>
-          <% let shortDay = day.weekday.slice(0, 3).toLowerCase() %>
-          <% dayStatus = shortDay + 'Complete' %>
-          <div>
-            <form action="/weeks/<%= week._id %>/habits/<%= habit._id %>?_method=PUT" method="post">
-              <label for="habitCheck"><%= habit.content %></label>
-              <input type="checkbox" name="<%= dayStatus %>" id="habitCheck" <%- habit[dayStatus] ? 'checked' : ''%>>
-              
-              <button type="submit">Update</button>
-            </form>
-          </div>
-        <% }); %>
+      <div class="day-content">
+        <div class="entries">
+          <h3>Entries</h3>
+          <ul>
+            <% day.entries.forEach(function(entry) { %>
+              <li>Content: <%= entry.content %>, Category: <%= entry.category %>
+                <a class="submit-icon" href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>/edit"><span title="Edit Entry"><i class="fas fa-edit"></i></span></a>
+                <form action="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>?_method=DELETE" method="post">
+                  <button class="submit-icon" type="submit"><span title="Delete Entry"><i class="fas fa-trash-alt"></i></span></button>
+                </form>
+              </li>
+            <% }); %>
+          </ul>
+          <a class="submit-icon" href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/new"><i class="fas fa-plus"></i> Add New</a>
+        </div>
+
+        <div class="habits">
+          <h3>Habits</h3>
+          <% habits.forEach(function(habit) { %>
+            <% let shortDay = day.weekday.slice(0, 3).toLowerCase() %>
+            <% dayStatus = shortDay + 'Complete' %>
+            <div>
+              <form action="/weeks/<%= week._id %>/habits/<%= habit._id %>?_method=PUT" method="post">
+                <label for="habitCheck"><%= habit.content %></label>
+                <input type="checkbox" name="<%= dayStatus %>" id="habitCheck" <%- habit[dayStatus] ? 'checked' : ''%>>
+                
+                <button class="submit-icon" type="submit"><span title="Mark complete for today"><i class="fas fa-arrow-right"></i></span></button>
+              </form>
+            </div>
+          <% }); %>
+        </div>
+
       </div>
     </div>
-  <% }); %>
+    <% }); %>
 </div>
 
 <div class="trackers">
   <div class="section">
-    <h2>Habits</h2>
+    <h2>Habit Tracker</h2>
     <table>
       <tr>
-        <th></th>
+        <th class="no-border"></th>
+        <th class="no-border"></th>
         <th>Mon</th>
         <th>Tue</th>
         <th>Wed</th>
@@ -53,44 +60,44 @@
         <th>Fri</th>
         <th>Sat</th>
         <th>Sun</th>
-        <th></th>
-        <th></th>
       </tr>
       <% habits.forEach(function(habit) { %>
         <tr>
-          <td><%= habit.content %></td>
-          <td><%= habit.monComplete ? 'X' : '' %></td>
-          <td><%= habit.tueComplete ? 'X' : '' %></td>
-          <td><%= habit.wedComplete ? 'X' : '' %></td>
-          <td><%= habit.thuComplete ? 'X' : '' %></td>
-          <td><%= habit.friComplete ? 'X' : '' %></td>
-          <td><%= habit.satComplete ? 'X' : '' %></td>
-          <td><%= habit.sunComplete ? 'X' : '' %></td>
-          <td><a href="/weeks/<%= week._id %>/habits/<%= habit._id %>/edit">Edit</a></td>
-          <td><form action="/weeks/<%= week._id %>/habits/<%= habit._id %>?_method=DELETE" method="post">
-              <button type="submit">Delete</button>
-            </form></td>
+          <td class="habit-table-label no-border"><%= habit.content %></td>          
+          <td class="no-border">
+            <a class="submit-icon" href="/weeks/<%= week._id %>/habits/<%= habit._id %>/edit"><span title="Edit Habit"><i class="fas fa-edit"></i></span></a>
+            <form action="/weeks/<%= week._id %>/habits/<%= habit._id %>?_method=DELETE" method="post">
+              <button class="submit-icon" type="submit"><span title="Delete Habit"><i class="fas fa-trash-alt"></i></span></button>
+            </form>
+          </td>
+          <td class="table-body <%= habit.monComplete ? 'checked' : '' %>"><%= habit.monComplete ? 'X' : '' %></td>
+          <td class="table-body <%= habit.tueComplete ? 'checked' : '' %>"><%= habit.tueComplete ? 'X' : '' %></td>
+          <td class="table-body <%= habit.wedComplete ? 'checked' : '' %>"><%= habit.wedComplete ? 'X' : '' %></td>
+          <td class="table-body <%= habit.thuComplete ? 'checked' : '' %>"><%= habit.thuComplete ? 'X' : '' %></td>
+          <td class="table-body <%= habit.friComplete ? 'checked' : '' %>"><%= habit.friComplete ? 'X' : '' %></td>
+          <td class="table-body <%= habit.satComplete ? 'checked' : '' %>"><%= habit.satComplete ? 'X' : '' %></td>
+          <td class="table-body <%= habit.sunComplete ? 'checked' : '' %>"><%= habit.sunComplete ? 'X' : '' %></td>
         </tr>
       <% }); %>
     </table>
           
-    <a href="/weeks/<%= week._id %>/habits/new">New Habit</a>
+    <a class="submit-icon" href="/weeks/<%= week._id %>/habits/new"><i class="fas fa-plus"></i> Add New</a>
   </div>
   
   <div class="section">
-    <h2>Goals</h2>
+    <h2>Weekly Goals</h2>
     <ul>
       <% goals.forEach(function(goal) { %>
         <li>
           Content: <%= goal.content %>
-          <a href="/weeks/<%= week._id %>/goals/<%= goal._id %>/edit">Edit</a>
+          <a class="submit-icon" href="/weeks/<%= week._id %>/goals/<%= goal._id %>/edit"><span title="Edit Goal"><i class="fas fa-edit"></i></span></a>
               <form action="/weeks/<%= week._id %>/goals/<%= goal._id %>?_method=DELETE" method="post">
-                <button type="submit">Delete</button>
+                <button class="submit-icon" type="submit"><span title="Delete Goal"><i class="fas fa-trash-alt"></i></span></button>
               </form>
         </li>
       <% }); %>
     </ul>
-    <a href="/weeks/<%= week._id %>/goals/new">New Goal</a>
+    <a class="submit-icon" href="/weeks/<%= week._id %>/goals/new"><i class="fas fa-plus"></i> Add New</a>
   </div>
 </div>
 
