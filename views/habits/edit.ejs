@@ -1,15 +1,11 @@
 <%- include('../partials/header') %>
 
-<form action="/weeks/<%= week._id %>/habits/<%= habitId %>?_method=PUT" method="POST">
+<form action="/weeks/<%= week._id %>/habits/<%= editHabit._id %>?_method=PUT" method="POST">
     <label>
         Updated Habit: 
-        <input type="text" name="content">
+        <input type="text" name="content" value="<%= editHabit.content %>">
     </label>
-    <label>
-        Updated Category: 
-        <input type="text" name="category">
-    </label>
-    <input type="submit" name="" value="Add Entry" />
+    <input type="submit" value="Update Habit" />
 </form>
 
 <%- include('../partials/footer') %>

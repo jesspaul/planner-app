@@ -7,8 +7,13 @@ const goalSchema = new Schema({
 
 const habitSchema = new Schema({
   content: String,
-  date: Date,
-  complete: Boolean,
+  monComplete: Boolean,
+  tueComplete: Boolean,
+  wedComplete: Boolean,
+  thuComplete: Boolean,
+  friComplete: Boolean,
+  satComplete: Boolean,
+  sunComplete: Boolean,
 }, { timestamps: true });
 
 const entrySchema = new Schema({

@@ -18,8 +18,23 @@
             </li>
           <% }); %>
         </ul>
-  
         <a href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/new">New Entry</a>
+      </div>
+      <div class="habits">
+        <h3>Habits</h3>
+
+        <% habits.forEach(function(habit) { %>
+          <% let shortDay = day.weekday.slice(0, 3).toLowerCase() %>
+          <% dayStatus = shortDay + 'Complete' %>
+          <div>
+            <form action="/weeks/<%= week._id %>/habits/<%= habit._id %>?_method=PUT" method="post">
+              <label for="habitCheck"><%= habit.content %></label>
+              <input type="checkbox" name="<%= dayStatus %>" id="habitCheck" <%- habit[dayStatus] ? 'checked' : ''%>>
+              
+              <button type="submit">Update</button>
+            </form>
+          </div>
+        <% }); %>
       </div>
     </div>
   <% }); %>
@@ -28,17 +43,37 @@
 <div class="trackers">
   <div class="section">
     <h2>Habits</h2>
-    <ul>
+    <table>
+      <tr>
+        <th></th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+        <th>Sun</th>
+        <th></th>
+        <th></th>
+      </tr>
       <% habits.forEach(function(habit) { %>
-        <li>
-          Content: <%= habit.content %>, Complete: <%= habit.complete ? 'Yes' : 'No' %>
-          <a href="/weeks/<%= week._id %>/habits/<%= habit._id %>/edit">Edit</a>
-              <form action="/weeks/<%= week._id %>/habits/<%= habit._id %>?_method=DELETE" method="post">
-                <button type="submit">Delete</button>
-              </form>
-        </li>
+        <tr>
+          <td><%= habit.content %></td>
+          <td><%= habit.monComplete ? 'X' : '' %></td>
+          <td><%= habit.tueComplete ? 'X' : '' %></td>
+          <td><%= habit.wedComplete ? 'X' : '' %></td>
+          <td><%= habit.thuComplete ? 'X' : '' %></td>
+          <td><%= habit.friComplete ? 'X' : '' %></td>
+          <td><%= habit.satComplete ? 'X' : '' %></td>
+          <td><%= habit.sunComplete ? 'X' : '' %></td>
+          <td><a href="/weeks/<%= week._id %>/habits/<%= habit._id %>/edit">Edit</a></td>
+          <td><form action="/weeks/<%= week._id %>/habits/<%= habit._id %>?_method=DELETE" method="post">
+              <button type="submit">Delete</button>
+            </form></td>
+        </tr>
       <% }); %>
-    </ul>
+    </table>
+          
     <a href="/weeks/<%= week._id %>/habits/new">New Habit</a>
   </div>
   
