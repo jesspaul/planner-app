@@ -3,7 +3,7 @@ const Week = require("../models/week.js");
 
 // NEW
 function newEntry(req, res) {
-  res.render("days/new.ejs", {
+  res.render("entries/new.ejs", {
     weekId: req.params.weekId,
     dayId: req.params.dayId
   });
@@ -20,10 +20,10 @@ function create(req, res) {
             category: req.body.category
           }
           day.entries.push(entryObj);
+          week.save(function(err, savedWeek) {
+            res.redirect(`/weeks/${savedWeek._id}`);
+          });
         };
-      });
-      week.save(function(err) {
-        res.redirect(`/weeks/${week._id}`);
       });
     })
   });
@@ -38,11 +38,11 @@ function deleteEntry(req, res) {
           if (entry._id == req.params.entryId) {
             let entryIdx = day.entries.indexOf(entry);
             day.entries.splice(entryIdx, 1);
+            week.save(function(err) {
+              res.redirect(`/weeks/${week._id}`);
+            });
           };
         });
-      });
-      week.save(function(err) {
-        res.redirect(`/weeks/${week._id}`);
       });
     });
   });
@@ -50,7 +50,7 @@ function deleteEntry(req, res) {
             
 // EDIT
 function edit(req, res) {
-  res.render('days/edit.ejs', {
+  res.render('entries/edit.ejs', {
     weekId: req.params.weekId,
     dayId: req.params.dayId,
     entryId: req.params.entryId
@@ -71,11 +71,11 @@ function update(req, res) {
           if (entry._id == req.params.entryId) {
             let entryIdx = day.entries.indexOf(entry);
             day.entries.splice(entryIdx, 1, updatedEntry);
+            week.save(function(err) {
+              res.redirect(`/weeks/${week._id}`);
+            });
           };
         });
-      });
-      week.save(function(err) {
-        res.redirect(`/weeks/${week._id}`);
       });
     });
   });
