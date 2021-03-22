@@ -1,6 +1,5 @@
 <%- include('../partials/header') %>
 
-<h1>Edit Week Page</h1>
 <form action="/weeks/<%=week.id%>?_method=PUT" method="POST">
     <!--  NOTE: the form is pre-populated with values for the server-->
     Name: <input type="text" name="name" value="<%=week.name%>"/><br/>

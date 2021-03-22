@@ -5,7 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
-    <title>Planner App</title>
+    <title>
+        <% if (title != 'Home') { %>
+            <%= title %> | Planner App
+        <% } else { %>
+            Planner App
+        <% } %>
+    </title>
 </head>
 <body>
     <nav>
@@ -15,3 +21,10 @@
         </ul>
     </nav>
     <main>
+        <h1>
+            <% if (title != 'Home') { %>
+                <%= title %>
+            <% } else { %>
+                Planner App
+            <% } %>
+        </h1>

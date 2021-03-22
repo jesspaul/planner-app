@@ -3,7 +3,8 @@ const Week = require("../models/week.js");
 
 function newGoal(req, res) {
     res.render('goals/new.ejs', {
-      weekId: req.params.id
+      weekId: req.params.id,
+      title: 'New Goal'
     });
   }
 
@@ -20,7 +21,8 @@ function newGoal(req, res) {
     Week.findById(req.params.id, (err, foundWeek) => {
       res.render("goals/edit.ejs", {
         week: foundWeek,
-        goalId: req.params.goalId
+        goalId: req.params.goalId,
+        title: 'Edit Goal'
       });
     });
   }

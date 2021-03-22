@@ -3,7 +3,8 @@ const Week = require("../models/week.js");
 
 function newHabit(req, res) {
     res.render('habits/new.ejs', {
-      weekId: req.params.id
+      weekId: req.params.id,
+      title: 'New Habit'
     });
   }
 
@@ -20,7 +21,8 @@ function newHabit(req, res) {
     Week.findById(req.params.id, (err, foundWeek) => {
       res.render("habits/edit.ejs", {
         week: foundWeek,
-        habitId: req.params.habitId
+        habitId: req.params.habitId,
+        title: 'Edit Habit'
       });
     });
   }

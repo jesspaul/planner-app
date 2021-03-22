@@ -78,3 +78,7 @@ h1 {
     overflow: auto;
     background-color: wheat;
 }
+
+form {
+    display: inline;
+}

@@ -5,7 +5,8 @@ const Week = require("../models/week.js");
 function newEntry(req, res) {
   res.render("entries/new.ejs", {
     weekId: req.params.weekId,
-    dayId: req.params.dayId
+    dayId: req.params.dayId,
+    title: 'New Entry'
   });
 }
 
@@ -53,7 +54,8 @@ function edit(req, res) {
   res.render('entries/edit.ejs', {
     weekId: req.params.weekId,
     dayId: req.params.dayId,
-    entryId: req.params.entryId
+    entryId: req.params.entryId,
+    title: 'Edit Entry'
   });
 }
 
