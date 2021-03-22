@@ -49,7 +49,6 @@ function create(req, res) {
         foundWeek.days.push(dayObj);
       };
       foundWeek.save(function(err) {
-        console.log(foundWeek.days);
         res.redirect("/weeks");
       });
     });
@@ -64,7 +63,7 @@ function show(req, res) {
       days: foundWeek.days,
       goals: foundWeek.goals,
       habits: foundWeek.habits,
-      title: 'Weeks Show Page'
+      title: `${foundWeek.month} ${foundWeek.year}`
     });
   });
 }

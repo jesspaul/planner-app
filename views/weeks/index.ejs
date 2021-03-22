@@ -3,7 +3,7 @@
 <ul>
   <% weeks.forEach(function(week) { %>
   <li>
-    <a href="/weeks/<%= week._id; %>">Week</a><br>
+    <a href="/weeks/<%= week._id; %>">Week of <%= week.month %> <%= week.weekdate %> <%= week.year %></a><br>
     Start Day: <%= week.startDay %><br>
     Month: <%= week.month %><br>
     Year: <%= week.year %><br>
