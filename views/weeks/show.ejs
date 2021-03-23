@@ -14,7 +14,9 @@
           <h3>Entries</h3>
           <ul>
             <% day.entries.forEach(function(entry) { %>
-              <li>Content: <%= entry.content %>, Category: <%= entry.category %>
+              <li>
+                <p><%= entry.content %></p>
+                <p class="category <%= entry.category %>Cat">Category: <%= entry.category %></p>
                 <div class="buttons">
                   <a class="submit-icon" href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>/edit"><span title="Edit Entry"><i class="fas fa-edit"></i></span></a>
                   <form action="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>?_method=DELETE" method="post">

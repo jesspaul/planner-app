@@ -1,7 +1,14 @@
 :root {
-    --link-color: purple;
-    --primary-accent: orchid;
-    --secondary-accent: palegreen;
+    --link-color: #BF584A;
+    --primary-color: #3C6E71;
+    --secondary-color: #FFFFFF;
+    --primary-accent: #284B63;
+    --secondary-accent: #D9D9D9;
+    /* --link-color: #8D3B72;
+    --primary-color: #89A7A7;
+    --secondary-color: #B5D8CC;
+    --primary-accent: #72E1D1;
+    --secondary-accent: #8A7090; */
 }
 
 * {
@@ -13,6 +20,7 @@ body {
     margin: 0;
     font-family: Helvetica;
     word-wrap: break-word;
+    background-color: var(--primary-color);
 }
 
 nav {
@@ -30,12 +38,18 @@ nav li {
     display: inline;
 }
 
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
 main {
     margin: 50px 10px 0 10px;
 }
 
 h1 {
-    color: red;
+    color: var(--secondary-color);
+    font-size: 40px;
     margin-bottom: 15px;
 }
 
@@ -61,11 +75,10 @@ form {
     grid-template-rows: 1fr 1fr;
     grid-row-gap: 5px;
     grid-column-gap: 5px;
-    background-color: aquamarine;
 }
 
 .day {
-    background-color: skyblue;
+    background-color: var(--secondary-color);
     min-width: 200px;
     max-height: 600px;
     min-height: 255px;
@@ -104,6 +117,10 @@ form {
     padding-left: 12px;
 }
 
+.category {
+    font-size: 13px;
+}
+
 .buttons {
     padding-left: 15px;
 }
@@ -123,11 +140,11 @@ form {
 .trackers {
     display: flex;
     justify-content: space-around;
-    background-color: orange;
+    margin: 20px 0;
 }
 
 .tracker-section {
-    background-color: thistle;
+    background-color: var(--secondary-color);
     padding: 20px;
     display: inline;
     min-width: 500px;
@@ -155,6 +172,7 @@ th, .habit-table-label {
 
 .table-body {
     font-size: 22px;
+    color: var(--secondary-color);
 }
 
 .no-border {
