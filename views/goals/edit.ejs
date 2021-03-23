@@ -1,11 +1,18 @@
 <%- include('../partials/header') %>
 
-<form action="/weeks/<%= week._id %>/goals/<%= goalId %>?_method=PUT" method="POST">
-    <label>
-        Edit Goal: 
-        <input type="text" name="content">
-    </label>
-    <input type="submit" name="" value="Edit Goal" />
-</form>
+<div class="center-section">
+    <div class="heading">
+        <h2>Edit This Goal</h2>
+    </div>
+    <div class="container">
+        <form action="/weeks/<%= week._id %>/goals/<%= goalId %>?_method=PUT" method="POST">
+            <label>
+                <p>Edit Goal:</p>                 
+                <input type="text" name="content">
+            </label>
+            <input type="submit" name="" value="Edit Goal" />
+        </form>
+    </div>
+</div>
 
 <%- include('../partials/footer') %>

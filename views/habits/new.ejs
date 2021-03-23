@@ -1,11 +1,17 @@
 <%- include('../partials/header') %>
-
-<form action="/weeks/<%= weekId %>/habits" method="POST">
-    <label>
-        New Habit: 
-        <input type="text" name="content">
-    </label>
-    <input type="submit" value="Add Entry" />
-</form>
+<div class="center-section">
+    <div class="heading">
+        <h2>Create New Habit</h2>
+    </div>
+    <div class="container">
+        <form action="/weeks/<%= weekId %>/habits" method="POST">
+            <label>
+                <p>New Habit:</p>
+                <input type="text" name="content">
+            </label>
+            <input type="submit" value="Add Entry" />
+        </form>
+    </div>
+</div>
 
 <%- include('../partials/footer') %>

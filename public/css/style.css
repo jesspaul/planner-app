@@ -26,6 +26,7 @@ nav {
     display: flex;
     justify-content: flex-end;
     background-color: var(--primary-color);
+    overflow: hidden;
 }
 
 nav li {
@@ -108,11 +109,11 @@ form {
     padding: 10px;
 }
 
-.entries {
+.first {
     margin-bottom: 25px;
 }
 
-.entries ul {
+.first ul {
     padding-left: 12px;
 }
 
@@ -182,8 +183,8 @@ th, .habit-table-label {
     background-color: var(--primary-accent);
 }
 
-/* week index page */
-.weeks-list {
+.center-section {
+    margin: 0 auto;
     width: 50%;
     background-color: var(--secondary-color);
 }

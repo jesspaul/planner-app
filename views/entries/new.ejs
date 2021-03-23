@@ -1,21 +1,27 @@
 <%- include('../partials/header') %>
-
-<form action="/weeks/<%= weekId %>/days/<%= dayId %>/entries" method="POST">
-    <div>
-        <label>
-            Entry: 
-            <textarea name="content"></textarea>
-        </label>
+<div class="center-section">
+    <div class="heading">
+        <h2>Create New Entry</h2>
     </div>
-    <div>
-        <label>
-            Category: 
-            <input type="text" name="category">
-        </label>
+    <div class="container">
+        <form action="/weeks/<%= weekId %>/days/<%= dayId %>/entries" method="POST">
+            <div class="first">
+                <label>
+                    <p>Entry:</p>                    
+                    <textarea name="content"></textarea>
+                </label>
+            </div>
+            <div class="second">
+                <label>
+                    <p>Category:</p>                     
+                    <input type="text" name="category">
+                </label>
+            </div>
+            <div>
+                <input type="submit" name="" value="Add Entry" />
+            </div>
+        </form>
     </div>
-    <div>
-        <input type="submit" name="" value="Add Entry" />
-    </div>
-</form>
+</div>
 
 <%- include('../partials/footer') %>

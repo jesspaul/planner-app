@@ -1,11 +1,18 @@
 <%- include('../partials/header') %>
 
-<form action="/weeks/<%= weekId %>/goals" method="POST">
-    <label>
-        New Goal: 
-        <input type="text" name="content">
-    </label>
-    <input type="submit" name="" value="Add Goal" />
-</form>
+<div class="center-section">
+    <div class="heading">
+        <h2>Create a New Goal</h2>
+    </div>
+    <div class="container">
+        <form action="/weeks/<%= weekId %>/goals" method="POST">
+            <label>
+                <p>New Goal:</p>                
+                <input type="text" name="content">
+            </label>
+            <input type="submit" name="" value="Add Goal" />
+        </form>
+    </div>
+</div>
 
 <%- include('../partials/footer') %>

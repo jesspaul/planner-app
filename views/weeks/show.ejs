@@ -10,7 +10,7 @@
       </div>
 
       <div class="day-content">
-        <div class="entries">
+        <div class="first">
           <h3>Entries</h3>
           <ul>
             <% day.entries.forEach(function(entry) { %>
@@ -31,7 +31,7 @@
           </div>
         </div>
 
-        <div class="habits">
+        <div class="second">
           <h3>Habits</h3>
           <% habits.forEach(function(habit) { %>
             <% let shortDay = day.weekday.slice(0, 3).toLowerCase() %>

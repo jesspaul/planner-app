@@ -1,42 +1,52 @@
 <%- include('../partials/header') %>
 
-<form action="/weeks" method="POST">
-  <label>
-    <h3>First Day:</h3>
-    <input type="date" name="startDay" required /><br />
-  </label>
-  <label>
-    <h3>Habits: </h3>
-    
-    <% let habitCollection = []; %>
-
-    <% weeks.forEach(function(week) { %>
-      <% week.habits.forEach(function(habit) { %>
-        <% if (!habitCollection.includes(habit.content)) { %>
-          <% habitCollection.push(habit.content); %>
-        <% } %>
-      <% }); %>
-          
-      <% habitCollection.sort(function(a, b) { %>
-        <% if (a < b) { %>
-          <% return -1; %>
-        <% } else if (a > b) { %>
-          <% return 1; %>
-        <% } else { %>
-          <% return 0; %>
-        <% } %>
-      <% }); %>
-    <% }); %>
-
-    <% habitCollection.forEach(function(habit) { %>
-      <div class="habit-select">
-        <label for="<%= habit %>Id"><%= habit %></label>
-        <input type="checkbox" name="habitList" value="<%= habit %>" id="<%= habit %>Id">
+<div class="center-section">
+  <div class="heading">
+    <h2>Create New Week</h2>
+  </div>
+  <div class="container">
+    <form action="/weeks" method="POST">
+      <div class="first">
+        <label>
+          <h3>First Day:</h3>
+          <input type="date" name="startDay" required /><br />
+        </label>
       </div>
-    <% }) %>
-
-  </label>
-  <input type="submit" name="" value="Create Week" />
-</form>
+      <div class="second">
+        <label>
+          <h3>Habits: </h3>
+          
+          <% let habitCollection = []; %>
+      
+          <% weeks.forEach(function(week) { %>
+            <% week.habits.forEach(function(habit) { %>
+              <% if (!habitCollection.includes(habit.content)) { %>
+                <% habitCollection.push(habit.content); %>
+              <% } %>
+            <% }); %>
+                
+            <% habitCollection.sort(function(a, b) { %>
+              <% if (a < b) { %>
+                <% return -1; %>
+              <% } else if (a > b) { %>
+                <% return 1; %>
+              <% } else { %>
+                <% return 0; %>
+              <% } %>
+            <% }); %>
+          <% }); %>
+      
+          <% habitCollection.forEach(function(habit) { %>
+            <div class="habit-select">
+              <label for="<%= habit %>Id"><%= habit %></label>
+              <input type="checkbox" name="habitList" value="<%= habit %>" id="<%= habit %>Id">
+            </div>
+          <% }) %>
+        </label>
+      </div>
+      <input type="submit" name="" value="Create Week" />
+    </form>
+  </div>
+</div>
 
   <%- include('../partials/footer') %>
