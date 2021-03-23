@@ -1,10 +1,21 @@
 const { set } = require("mongoose");
 const Week = require("../models/week.js");
 
-// INDEX..aka SHOW ALL
+// index - list all weeks
 function index(req, res) {
   Week.find({}, (error, weeks) => {
-    // res.send(weeks);
+    weeks.sort(function(a, b) {
+      a = a.startDay;
+      b = b.startDay;
+      if (a < b) {
+        return -1;
+      } else if (a > b) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+
     res.render("weeks/index.ejs", {
       weeks,
       title: 'Weeks Index Page'
@@ -12,7 +23,7 @@ function index(req, res) {
   });
 }
 
-// NEW
+// new - get user input to create a new week
 function newWeek(req, res) {
   Week.find({}, (error, weeks) => {
     res.render("weeks/new.ejs", {
@@ -22,7 +33,7 @@ function newWeek(req, res) {
   });
 }
 
-// CREATE
+// create - take user information and create new week in DB
 function create(req, res) {
   const dateInput = new Date(req.body.startDay);
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -36,9 +47,11 @@ function create(req, res) {
   
   Week.create(req.body, (error, newWeek) => {
     Week.findById(newWeek._id, function(err, foundWeek) {
-      req.body.habitList.forEach(function(habit) {
-        foundWeek.habits.push({content: habit});
-      });
+      if (req.body.habitList) {
+        req.body.habitList.forEach(function(habit) {
+          foundWeek.habits.push({content: habit});
+        });
+      }
       for (let i = 0; i < 7; i++) {
         let newDay = new Date(dateInput.setUTCDate(req.body.weekdate + i));
         let dayObj = {
@@ -56,7 +69,7 @@ function create(req, res) {
   });
 }
 
-// SHOW ONE
+// show - show details of the week - main component of the app
 function show(req, res) {
   Week.findById(req.params.id, (err, foundWeek) => {
     res.render("weeks/show.ejs", {
@@ -69,16 +82,14 @@ function show(req, res) {
   });
 }
 
-// DELETE
+// delete - delete one week 
 function deleteWeek(req, res) {
-  // res.send('deleting...')
   Week.deleteOne({ _id: req.params.id }, function(err) {
     res.redirect("/weeks");
   })
 }
 
-// EDIT
-// /weeks/5e5a93cd12675b4c0efcb17e/edit
+// edit - get user input to edit one week
 function edit(req, res) {
   Week.find({}, function(err, weeks) {
     weeks.forEach(function(week) {
@@ -93,14 +104,13 @@ function edit(req, res) {
   });
 }
 
-// PUT/UPDATE
+// put/update - update week with information from user
 function update(req, res) {
   if (req.body.readyToEat === "on") {
     req.body.readyToEat = true;
   } else {
     req.body.readyToEat = false;
   }
-  // res.send(req.body)
   Week.findByIdAndUpdate(
     req.params.id,
     req.body,
@@ -108,7 +118,6 @@ function update(req, res) {
     (err, updateModel) => {
       if (err) {
       } else {
-        // res.send(updateModel);
         res.redirect("/weeks");
       }
     }
