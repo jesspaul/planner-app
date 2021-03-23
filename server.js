@@ -22,7 +22,7 @@ app.use("/", daysRouter);
 
 // wildcard route
 app.get("*", (req, res) => {
-  res.redirect("/weeks");
+  res.redirect("/");
 });
 
 // Web server:

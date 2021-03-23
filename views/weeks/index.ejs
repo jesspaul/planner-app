@@ -1,20 +1,28 @@
 <%- include('../partials/header') %>
 
-<ul>
-  <% weeks.forEach(function(week) { %>
-  <li>
-    <a href="/weeks/<%= week._id; %>">Week of <%= week.month %> <%= week.weekdate %> <%= week.year %></a>
+<div class="weeks-list">
+  <div class="heading">
+    <h2>Weeks</h2>
+  </div>
 
-    <a class="submit-icon" href="/weeks/<%= week._id%>/edit"><span title="Edit Week"><i class="fas fa-edit"></i></span></a>
-    <form action="/weeks/<%= week._id%>?_method=DELETE" method="POST">
-      <button class="submit-icon" type="submit"><span title="Delete Week"><i class="fas fa-trash-alt"></i></span></button>
-    </form>
-  </li>
-  <% }); %>
-</ul>
-
-<div class="add-new">
-  <a class="submit-icon" href="/weeks/new"><i class="fas fa-plus"></i> Add New</a>
+  <div class="container">
+    <ul>
+      <% weeks.forEach(function(week) { %>
+      <li>
+        <a href="/weeks/<%= week._id; %>">Week of <%= week.month %> <%= week.weekdate %> <%= week.year %></a>
+    
+        <a class="submit-icon" href="/weeks/<%= week._id%>/edit"><span title="Edit Week"><i class="fas fa-edit"></i></span></a>
+        <form action="/weeks/<%= week._id%>?_method=DELETE" method="POST">
+          <button class="submit-icon" type="submit"><span title="Delete Week"><i class="fas fa-trash-alt"></i></span></button>
+        </form>
+      </li>
+      <% }); %>
+    </ul>
+    
+    <div class="add-new">
+      <a class="submit-icon" href="/weeks/new"><i class="fas fa-plus"></i> Add New</a>
+    </div>
+  </div>
 </div>
 
   <%- include('../partials/footer') %>
