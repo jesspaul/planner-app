@@ -52,7 +52,7 @@ function create(req, res) {
   
   Week.create(req.body, (error, newWeek) => {
     Week.findById(newWeek._id, function(err, foundWeek) {
-      if (req.body.habitList) {
+      if (typeof(req.body.habitList) === 'object') {
         req.body.habitList.forEach(function(habit) {
           foundWeek.habits.push({content: habit});
         });

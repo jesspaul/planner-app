@@ -35,6 +35,7 @@ function newHabit(req, res) {
   }
 
   function update(req, res) {
+    console.log(req.body)
     Week.findById(req.params.id, function(err, foundWeek) {
       foundWeek.habits.forEach(function(habit) {
         if (habit._id == req.params.habitId) {
@@ -43,16 +44,15 @@ function newHabit(req, res) {
             foundWeek.habits[habitIdx].content = req.body.content;
           }
 
-          let days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+          let days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
           days.forEach(function(day) {
             let completeDay = day + 'Complete'
-            if (req.body[completeDay]) {
+            if (req.body[completeDay] === 'on') {
               habit[completeDay] = true;
             }
           });
         }
       });
-
       foundWeek.save(function(err) {
         res.redirect(`/weeks/${foundWeek._id}`);
       });

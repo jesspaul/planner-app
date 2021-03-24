@@ -7,13 +7,13 @@ const goalSchema = new Schema({
 
 const habitSchema = new Schema({
   content: String,
+  sunComplete: Boolean,
   monComplete: Boolean,
   tueComplete: Boolean,
   wedComplete: Boolean,
   thuComplete: Boolean,
   friComplete: Boolean,
   satComplete: Boolean,
-  sunComplete: Boolean,
 }, { timestamps: true });
 
 const entrySchema = new Schema({
@@ -22,6 +22,10 @@ const entrySchema = new Schema({
 }, { timestamps: true })
 
 const daySchema = new Schema({
+  startDay: {
+    type: String,
+    unique: true
+  },
   month: String,
   year: Number,
   weekday: String,
