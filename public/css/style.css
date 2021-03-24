@@ -177,3 +177,7 @@ th, .habit-table-label {
 .container {
     padding: 20px;
 }
+
+.month-link {
+    margin: 5px;
+}

@@ -12,7 +12,7 @@ function show(req, res) {
       days: foundWeek.days,
       goals: foundWeek.goals,
       habits: foundWeek.habits,
-      title: `${foundWeek.month} ${foundWeek.year}`
+      title: `${foundMonth.month} ${foundWeek.year}`
     });
   });
 }

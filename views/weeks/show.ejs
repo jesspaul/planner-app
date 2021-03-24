@@ -1,5 +1,8 @@
 <%- include('../partials/header') %>
 
+<div class="month-link">
+  <a href="/months/<%= month._id %>"><i class="fas fa-arrow-left"></i> Back to <%= month.month %></a>
+</div>
 <div class="week-view">
   <% days.forEach(function(day) { %>
     <div class="day <%= day.weekday.toLowerCase() %>">
