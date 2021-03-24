@@ -41,11 +41,12 @@ function create(req, res) {
   
   const dateInput = moment(req.body.userInputDay);
   
-  if (days[dateInput.day()] !== 'Monday') {
-    dateInput.day(1);
+  if (days[dateInput.day()] !== 'Sunday') {
+    dateInput.day(0);
   }
  
   req.body.startDay = dateInput;
+  req.body.weekdate = dateInput.date();
   req.body.month = months[dateInput.month()];
   req.body.year = dateInput.year();
   
@@ -64,7 +65,6 @@ function create(req, res) {
           weekday: days[dateInput.day(i).day()],
           weekdate: dateInput.day(i).date(),
         };
-        console.log(`idx ${i} dayobj`, dayObj)
         foundWeek.days.push(dayObj);
       };
 
