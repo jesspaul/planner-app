@@ -55,14 +55,9 @@ function edit(req, res) {
 
 // PUT/UPDATE
 function update(req, res) {
-  let updatedEntry = {
-    content: req.body.content,
-    category: req.body.category
-  };
-
   Month.findById(req.params.monthId, function(err, foundMonth) {
     editEntry = foundMonth.weeks.id(req.params.weekId).days.id(req.params.dayId).entries.id(req.params.entryId)  
-    editEntry.set(updatedEntry);
+    editEntry.set(req.body);
 
     foundMonth.save(function(err, savedMonth) {
       res.redirect(`/months/${savedMonth._id}/weeks/${req.params.weekId}`);

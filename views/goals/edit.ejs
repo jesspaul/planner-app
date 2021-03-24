@@ -5,7 +5,7 @@
         <h2>Edit This Goal</h2>
     </div>
     <div class="container">
-        <form action="/weeks/<%= week._id %>/goals/<%= goalId %>?_method=PUT" method="POST">
+        <form action="/months/<%= monthId %>/weeks/<%= weekId %>/goals/<%= goalId %>?_method=PUT" method="POST">
             <label>
                 <p>Edit Goal:</p>                 
                 <input type="text" name="content" value="<%= editGoal.content %>">

@@ -1,59 +1,55 @@
 const { set } = require("mongoose");
-const Week = require("../models/week.js");
+const Month = require("../models/month.js");
 
 function newGoal(req, res) {
     res.render('goals/new', {
-      weekId: req.params.id,
+      monthId: req.params.monthId,
+      weekId: req.params.weekId,
       title: 'New Goal'
     });
   }
 
   function create(req, res) {
-    Week.findById(req.params.id, function(err, foundWeek) {
+    Month.findById(req.params.monthId, function(err, foundMonth) {
+      const foundWeek = foundMonth.weeks.id(req.params.weekId);
+      
       foundWeek.goals.push(req.body);
-      foundWeek.save(function(err) {
-        res.redirect(`/weeks/${foundWeek._id}`);
+  
+      foundMonth.save(function(err, savedMonth) {
+        res.redirect(`/months/${savedMonth._id}/weeks/${req.params.weekId}`);
       });
     });
   }
 
   function edit(req, res) {
-    Week.findById(req.params.id, (err, foundWeek) => {
-      res.render("goals/edit", {
-        week: foundWeek,
+    Month.findById(req.params.monthId, function(err, foundMonth) {
+      res.render('goals/edit', {
+        monthId: req.params.monthId,
+        weekId: req.params.weekId,
         goalId: req.params.goalId,
-        editGoal: foundWeek.goals.id(req.params.goalId),
+        editGoal: foundMonth.weeks.id(req.params.weekId).goals.id(req.params.goalId),
         title: 'Edit Goal'
       });
     });
   }
 
   function update(req, res) {
-    Week.findById(req.params.id, function(err, foundWeek) {
-      foundWeek.goals.forEach(function(goal) {
-        if (goal._id == req.params.goalId) {
-          let goalIdx = foundWeek.goals.indexOf(goal);
-          foundWeek.goals.splice(goalIdx, 1, req.body);
-        }
-      });
-
-      foundWeek.save(function(err) {
-        res.redirect(`/weeks/${foundWeek._id}`);
+    Month.findById(req.params.monthId, function(err, foundMonth) {
+      editGoal = foundMonth.weeks.id(req.params.weekId).goals.id(req.params.goalId)  
+      editGoal.set(req.body);
+  
+      foundMonth.save(function(err, savedMonth) {
+        res.redirect(`/months/${savedMonth._id}/weeks/${req.params.weekId}`);
       });
     });
   }
 
   function deleteGoal(req, res) {
-    Week.findById(req.params.id, function(err, foundWeek) {
-      foundWeek.goals.forEach(function(goal) {
-        if (goal._id == req.params.goalId) {
-          let goalIdx = foundWeek.goals.indexOf(goal);
-          foundWeek.goals.splice(goalIdx, 1);
-        }
-      });
-
-      foundWeek.save(function(err) {
-        res.redirect(`/weeks/${foundWeek._id}`);
+    Month.findById(req.params.monthId, function(err, foundMonth) {
+      foundMonth.weeks.id(req.params.weekId).goals.pull(req.params.goalId);
+  
+      foundMonth.save(function(err, savedMonth) {
+        res.redirect(`/months/${savedMonth._id}/weeks/${req.params.weekId}`);
       });
     });
   }

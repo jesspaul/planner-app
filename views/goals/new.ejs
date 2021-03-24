@@ -5,7 +5,7 @@
         <h2>Create a New Goal</h2>
     </div>
     <div class="container">
-        <form action="/weeks/<%= weekId %>/goals" method="POST">
+        <form action="/months/<%= monthId %>/weeks/<%= weekId %>/goals" method="POST">
             <label>
                 <p>New Goal:</p>                
                 <input type="text" name="content">

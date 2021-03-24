@@ -4,7 +4,7 @@
         <h2>Create New Habit</h2>
     </div>
     <div class="container">
-        <form action="/weeks/<%= weekId %>/habits" method="POST">
+        <form action="/months/<%= monthId %>/weeks/<%= weekId %>/habits" method="POST">
             <label>
                 <p>New Habit:</p>
                 <input type="text" name="content">

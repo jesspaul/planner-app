@@ -37,7 +37,7 @@
             <% let shortDay = day.weekday.slice(0, 3).toLowerCase() %>
             <% dayStatus = shortDay + 'Complete' %>
             <div>
-              <form action="/weeks/<%= week._id %>/habits/<%= habit._id %>?_method=PUT" method="post">
+              <form action="/months/<%= month._id %>/weeks/<%= week._id %>/habits/<%= habit._id %>?_method=PUT" method="post">
                 <label for="habitCheck"><%= habit.content %></label>
                 <input type="hidden" name="day" value="<%= shortDay %>">
                 <input type="checkbox" name="<%= dayStatus %>" id="habitCheck" <%- habit[dayStatus] ? 'checked' : ''%>>
@@ -73,8 +73,8 @@
           <tr>
             <td class="habit-table-label no-border"><%= habit.content %></td>          
             <td class="no-border">
-              <a class="submit-icon" href="/weeks/<%= week._id %>/habits/<%= habit._id %>/edit"><span title="Edit Habit"><i class="fas fa-edit"></i></span></a>
-              <form action="/weeks/<%= week._id %>/habits/<%= habit._id %>?_method=DELETE" method="post">
+              <a class="submit-icon" href="/months/<%= month._id %>/weeks/<%= week._id %>/habits/<%= habit._id %>/edit"><span title="Edit Habit"><i class="fas fa-edit"></i></span></a>
+              <form action="/months/<%= month._id %>/weeks/<%= week._id %>/habits/<%= habit._id %>?_method=DELETE" method="post">
                 <button class="submit-icon" type="submit"><span title="Delete Habit"><i class="fas fa-trash-alt"></i></span></button>
               </form>
             </td>
@@ -89,7 +89,7 @@
         <% }); %>
       </table>
       <div class="add-new">
-        <a class="submit-icon" href="/weeks/<%= week._id %>/habits/new"><i class="fas fa-plus"></i> Add New</a>
+        <a class="submit-icon" href="/months/<%= month._id %>/weeks/<%= week._id %>/habits/new"><i class="fas fa-plus"></i> Add New</a>
       </div>
     </div>
   </div>
@@ -103,15 +103,15 @@
         <% goals.forEach(function(goal) { %>
           <li>
             <%= goal.content %>
-            <a class="submit-icon" href="/weeks/<%= week._id %>/goals/<%= goal._id %>/edit"><span title="Edit Goal"><i class="fas fa-edit"></i></span></a>
-                <form action="/weeks/<%= week._id %>/goals/<%= goal._id %>?_method=DELETE" method="post">
+            <a class="submit-icon" href="/months/<%= month._id %>/weeks/<%= week._id %>/goals/<%= goal._id %>/edit"><span title="Edit Goal"><i class="fas fa-edit"></i></span></a>
+                <form action="/months/<%= month._id %>/weeks/<%= week._id %>/goals/<%= goal._id %>?_method=DELETE" method="post">
                   <button class="submit-icon" type="submit"><span title="Delete Goal"><i class="fas fa-trash-alt"></i></span></button>
                 </form>
           </li>
         <% }); %>
       </ul>
       <div class="add-new">
-        <a class="submit-icon" href="/weeks/<%= week._id %>/goals/new"><i class="fas fa-plus"></i> Add New</a>
+        <a class="submit-icon" href="/months/<%= month._id %>/weeks/<%= week._id %>/goals/new"><i class="fas fa-plus"></i> Add New</a>
       </div>
     </div>
   </div>
