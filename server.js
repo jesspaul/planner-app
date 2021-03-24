@@ -12,6 +12,9 @@ const usersRouter = require('./routes/users');
 //connect to DB
 require('./config/database');
 
+// configure app
+app.set('view engine', 'ejs');
+
 // mount middleware
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));

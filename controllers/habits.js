@@ -2,7 +2,7 @@ const { set } = require("mongoose");
 const Week = require("../models/week.js");
 
 function newHabit(req, res) {
-    res.render('habits/new.ejs', {
+    res.render('habits/new', {
       weekId: req.params.id,
       title: 'New Habit'
     });
@@ -26,7 +26,7 @@ function newHabit(req, res) {
         }
       })
 
-      res.render("habits/edit.ejs", {
+      res.render("habits/edit", {
         week: foundWeek,
         editHabit: foundWeek.habits[habitIdx],
         title: 'Edit Habit'

@@ -2,7 +2,7 @@ const { set } = require("mongoose");
 const Week = require("../models/week.js");
 
 function newGoal(req, res) {
-    res.render('goals/new.ejs', {
+    res.render('goals/new', {
       weekId: req.params.id,
       title: 'New Goal'
     });
@@ -19,7 +19,7 @@ function newGoal(req, res) {
 
   function edit(req, res) {
     Week.findById(req.params.id, (err, foundWeek) => {
-      res.render("goals/edit.ejs", {
+      res.render("goals/edit", {
         week: foundWeek,
         goalId: req.params.goalId,
         editGoal: foundWeek.goals.id(req.params.goalId),

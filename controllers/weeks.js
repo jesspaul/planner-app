@@ -17,7 +17,7 @@ function index(req, res) {
       }
     });
 
-    res.render("weeks/index.ejs", {
+    res.render("weeks/index", {
       weeks,
       title: 'Weeks Index Page'
     });
@@ -27,7 +27,7 @@ function index(req, res) {
 // new - get user input to create a new week
 function newWeek(req, res) {
   Week.find({}, (error, weeks) => {
-    res.render("weeks/new.ejs", {
+    res.render("weeks/new", {
       title: 'New Week',
       weeks
     });
@@ -78,7 +78,7 @@ function create(req, res) {
 // show - show details of the week - main component of the app
 function show(req, res) {
   Week.findById(req.params.id, (err, foundWeek) => {
-    res.render("weeks/show.ejs", {
+    res.render("weeks/show", {
       week: foundWeek,
       days: foundWeek.days,
       goals: foundWeek.goals,
@@ -100,7 +100,7 @@ function edit(req, res) {
   Week.find({}, function(err, weeks) {
     weeks.forEach(function(week) {
       if (week._id == req.params.id) {
-        res.render("weeks/edit.ejs", {
+        res.render("weeks/edit", {
           weeks,
           editWeek: week,
           title: 'Edit Week'

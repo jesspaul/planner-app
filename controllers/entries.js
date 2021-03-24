@@ -3,7 +3,7 @@ const Week = require("../models/week.js");
 
 // NEW
 function newEntry(req, res) {
-  res.render("entries/new.ejs", {
+  res.render("entries/new", {
     weekId: req.params.weekId,
     dayId: req.params.dayId,
     title: 'New Entry'
@@ -52,7 +52,7 @@ function deleteEntry(req, res) {
 // EDIT
 function edit(req, res) {
   Week.findById(req.params.weekId, function(err, foundWeek) {
-    res.render('entries/edit.ejs', {
+    res.render('entries/edit', {
       weekId: req.params.weekId,
       dayId: req.params.dayId,
       entryId: req.params.entryId,
