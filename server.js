@@ -2,7 +2,6 @@
 const express = require("express");
 const app = express();
 const methodOverride = require("method-override");
-const moment = require('moment');
 const PORT = process.env.PORT || 3000;
 const indexRouter = require("./routes/index.js");
 const weeksRouter = require("./routes/weeks.js");

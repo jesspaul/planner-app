@@ -51,11 +51,14 @@ function deleteEntry(req, res) {
             
 // EDIT
 function edit(req, res) {
-  res.render('entries/edit.ejs', {
-    weekId: req.params.weekId,
-    dayId: req.params.dayId,
-    entryId: req.params.entryId,
-    title: 'Edit Entry'
+  Week.findById(req.params.weekId, function(err, foundWeek) {
+    res.render('entries/edit.ejs', {
+      weekId: req.params.weekId,
+      dayId: req.params.dayId,
+      entryId: req.params.entryId,
+      editEntry: foundWeek.days.id(req.params.dayId).entries.id(req.params.entryId),
+      title: 'Edit Entry'
+    });
   });
 }
 

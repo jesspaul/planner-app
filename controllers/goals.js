@@ -22,6 +22,7 @@ function newGoal(req, res) {
       res.render("goals/edit.ejs", {
         week: foundWeek,
         goalId: req.params.goalId,
+        editGoal: foundWeek.goals.id(req.params.goalId),
         title: 'Edit Goal'
       });
     });

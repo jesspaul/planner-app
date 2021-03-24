@@ -9,13 +9,13 @@
             <div class="first">
                 <label>
                     <p>Updated Entry:</p>
-                    <textarea name="content"></textarea>
+                    <textarea name="content"><%= editEntry.content %></textarea>
                 </label>
             </div>
             <div class="second">
                 <label>
                     <p>Updated Category:</p>
-                    <input type="text" name="category">
+                    <input type="text" name="category" value="<%= editEntry.category %>">
                 </label>
             </div>
                 <input type="submit" name="" value="Update Entry" />
