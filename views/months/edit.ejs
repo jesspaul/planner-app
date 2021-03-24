@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+
+<div class="center-section">
+  <div class="heading">
+    <h2>Edit This Month</h2>
+  </div>
+  <div class="container">
+    <form action="/months/<%=editMonth.id%>?_method=PUT" method="POST">
+      <div class="first">
+        <label>
+          
+        </label>
+      </div>
+      <div class="second">
+        <label>
+      
+        </label>
+        <input type="submit" name="" value="Update Month" />
+      </div>
+    </form>
+  </div>
+</div>
+
+  <%- include('../partials/footer') %>

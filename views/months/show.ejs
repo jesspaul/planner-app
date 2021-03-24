@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+
+<div class="center-section">
+  <div class="heading">
+    <h2>Weeks</h2>
+  </div>
+
+  <div class="container">
+    <ul>
+      <% month.weeks.forEach(function(week) { %>
+      <li>
+        <a href="/months/<%= month._id %>/weeks/<%= week._id %>">Week of <%= week.month %> <%= week.weekdate %> <%= week.year %></a>
+    
+        <a class="submit-icon" href="/weeks/<%= week._id%>/edit">
+      </li>
+      <% }); %>
+    </ul>
+  </div>
+</div>
+
+  <%- include('../partials/footer') %>

@@ -35,7 +35,6 @@ function newHabit(req, res) {
   }
 
   function update(req, res) {
-    console.log(req.body)
     Week.findById(req.params.id, function(err, foundWeek) {
       foundWeek.habits.forEach(function(habit) {
         if (habit._id == req.params.habitId) {

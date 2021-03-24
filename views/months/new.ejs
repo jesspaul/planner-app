@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+
+<div class="center-section">
+  <div class="heading">
+    <h2>Create New Month</h2>
+  </div>
+  <div class="container">
+    <form action="/months" method="POST">
+      <div class="first">
+        <label for="month">
+          <h3>Month:</h3>
+          <input type="month" name="month">
+        </label>
+      </div>
+      <div class="second">
+        <label>
+        </label>
+      </div>
+      <input type="submit" name="" value="Create Month" />
+    </form>
+  </div>
+</div>
+
+  <%- include('../partials/footer') %>

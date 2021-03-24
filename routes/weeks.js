@@ -4,26 +4,20 @@ const weeksCtrl = require('../controllers/weeks');
 const goalsCtrl = require('../controllers/goals');
 const habitsCtrl = require('../controllers/habits');
 
-router.get('/', weeksCtrl.index);
-router.get('/new', weeksCtrl.new);
-router.post('/', weeksCtrl.create);
-router.delete('/:id', weeksCtrl.delete);
-router.get('/:id/edit', weeksCtrl.edit);
-router.put('/:id', weeksCtrl.update);
-router.get('/:id', weeksCtrl.show);
+router.get('/months/:monthId/weeks/:weekId', weeksCtrl.show);
 
 // goals
-router.get('/:id/goals/new', goalsCtrl.new);
-router.post('/:id/goals', goalsCtrl.create);
-router.get('/:id/goals/:goalId/edit', goalsCtrl.edit);
-router.put('/:id/goals/:goalId', goalsCtrl.update);
-router.delete('/:id/goals/:goalId', goalsCtrl.delete);
+router.get('/weeks/:weekId/goals/new', goalsCtrl.new);
+router.post('/weeks/:weekId/goals', goalsCtrl.create);
+router.get('/weeks/:weekId/goals/:goalId/edit', goalsCtrl.edit);
+router.put('/weeks/:weekId/goals/:goalId', goalsCtrl.update);
+router.delete('/weeks/:weekId/goals/:goalId', goalsCtrl.delete);
 
 // habits
-router.get('/:id/habits/new', habitsCtrl.new);
-router.post('/:id/habits', habitsCtrl.create);
-router.get('/:id/habits/:habitId/edit', habitsCtrl.edit);
-router.put('/:id/habits/:habitId', habitsCtrl.update);
-router.delete('/:id/habits/:habitId', habitsCtrl.delete);
+router.get('/weeks/:weekId/habits/new', habitsCtrl.new);
+router.post('/weeks/:weekId/habits', habitsCtrl.create);
+router.get('/weeks/:weekId/habits/:habitId/edit', habitsCtrl.edit);
+router.put('/weeks/:weekId/habits/:habitId', habitsCtrl.update);
+router.delete('/weeks/:weekId/habits/:habitId', habitsCtrl.delete);
 
 module.exports = router;

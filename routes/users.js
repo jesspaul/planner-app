@@ -7,7 +7,7 @@ router.get('/new', usersCtrl.new);
 router.post('/signup', usersCtrl.signUp);
 router.get('/signin', usersCtrl.signIn);
 router.post('/login', usersCtrl.login);
-router.get('/dashboard', usersCtrl.dashboard);
+router.get('/weeks', usersCtrl.weeks);
 router.get('/logout', usersCtrl.logout);
 
 module.exports = router;

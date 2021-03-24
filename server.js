@@ -5,6 +5,7 @@ const methodOverride = require("method-override");
 const session = require('express-session');
 const PORT = process.env.PORT || 3000;
 const indexRouter = require("./routes/index.js");
+const monthsRouter = require("./routes/months.js");
 const weeksRouter = require("./routes/weeks.js");
 const entriesRouter = require("./routes/entries.js");
 const usersRouter = require('./routes/users');
@@ -27,7 +28,8 @@ app.use(session({
 
 // mount routes
 app.use("/", indexRouter);
-app.use("/weeks", weeksRouter);
+app.use("/months", monthsRouter);
+app.use("/", weeksRouter);
 app.use("/", entriesRouter);
 app.use('/users', usersRouter);
 

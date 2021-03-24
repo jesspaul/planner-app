@@ -43,9 +43,9 @@ function login(req, res) {
     });
 }
 
-function dashboard(req, res) {
+function weeks(req, res) {
     if (req.session.userId) {
-        res.render('users/dashboard');
+        res.render('users/weeks');
     } else {
         res.redirect('/users/signin');
     }
@@ -63,6 +63,6 @@ module.exports = {
     signUp,
     signIn,
     login,
-    dashboard,
+    weeks,
     logout
 };

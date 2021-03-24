@@ -18,8 +18,8 @@
                 <p><%= entry.content %></p>
                 <p class="category <%= entry.category %>Cat">Category: <%= entry.category %></p>
                 <div class="buttons">
-                  <a class="submit-icon" href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>/edit"><span title="Edit Entry"><i class="fas fa-edit"></i></span></a>
-                  <form action="/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>?_method=DELETE" method="post">
+                  <a class="submit-icon" href="/months/<%= month._id %>/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>/edit"><span title="Edit Entry"><i class="fas fa-edit"></i></span></a>
+                  <form action="/months/<%= month._id %>/weeks/<%= week._id %>/days/<%= day._id %>/entries/<%= entry._id %>?_method=DELETE" method="post">
                     <button class="submit-icon" type="submit"><span title="Delete Entry"><i class="fas fa-trash-alt"></i></span></button>
                   </form>
                 </div>
@@ -27,7 +27,7 @@
             <% }); %>
           </ul>
           <div class="add-new">
-            <a class="submit-icon" href="/weeks/<%= week._id %>/days/<%= day._id %>/entries/new"><i class="fas fa-plus"></i> Add New</a>
+            <a class="submit-icon" href="/months/<%= month._id %>/weeks/<%= week._id %>/days/<%= day._id %>/entries/new"><i class="fas fa-plus"></i> Add New</a>
           </div>
         </div>
 
