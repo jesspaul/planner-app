@@ -39,6 +39,7 @@
             <div>
               <form action="/weeks/<%= week._id %>/habits/<%= habit._id %>?_method=PUT" method="post">
                 <label for="habitCheck"><%= habit.content %></label>
+                <input type="hidden" name="day" value="<%= shortDay %>">
                 <input type="checkbox" name="<%= dayStatus %>" id="habitCheck" <%- habit[dayStatus] ? 'checked' : ''%>>
                 
                 <button class="submit-icon" type="submit"><span title="Mark complete for today"><i class="fas fa-arrow-right"></i></span></button>

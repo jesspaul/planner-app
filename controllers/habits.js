@@ -49,6 +49,8 @@ function newHabit(req, res) {
             let completeDay = day + 'Complete'
             if (req.body[completeDay] === 'on') {
               habit[completeDay] = true;
+            } else if (req.body.day === day) {
+              habit[completeDay] = false;
             }
           });
         }
