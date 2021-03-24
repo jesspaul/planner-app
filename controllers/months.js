@@ -1,7 +1,6 @@
 const { set } = require("mongoose");
 const moment = require('moment');
 const Month = require("../models/month.js");
-const Week = require("../models/week.js");
 
 // index - list all months
 function index(req, res) {
@@ -37,7 +36,7 @@ function newMonth(req, res) {
 
 // create - take user information and create new month in DB
 function create(req, res) {
-  const userInput = moment(req.body.month);
+  const userInput = moment(req.body.userMonth);
   
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -45,12 +44,10 @@ function create(req, res) {
   req.body.month = months[userInput.month()];
   req.body.year = userInput.year();
   
-  console.log(`req.body: `, req.body)
   Month.create(req.body, (error, newMonth) => {
     if (error) {
-      console.log('error message: ', error)
+      console.log(error)
     } else {
-      console.log(`newMonth: `, newMonth)
       Month.findById(newMonth._id, function(err, foundMonth) {
         // while the date matches the current month, keep adding more weeks
         while (months[userInput.month()] === newMonth.month) {
