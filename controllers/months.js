@@ -48,6 +48,7 @@ function create(req, res) {
     if (error) {
       console.log(error)
     } else {
+      console.log('req.body', req.body)
       Month.findById(newMonth._id, function(err, foundMonth) {
         // while the date matches the current month, keep adding more weeks
         while (months[userInput.month()] === newMonth.month) {
@@ -58,7 +59,8 @@ function create(req, res) {
             weekdate: userInput.date(),
             month: months[userInput.month()],
             year: userInput.year(),
-            days: []
+            days: [],
+            habits: []
           };
 
           for (let i = 0; i < 7; i++) {
@@ -70,6 +72,11 @@ function create(req, res) {
             };
             weekObj.days.push(dayObj);
           };
+          console.log('week before habits', weekObj)
+          req.body.habitList.forEach(function(habit) {
+            weekObj.habits.push({content: habit});
+          });
+          console.log('week after habits', weekObj)
 
           foundMonth.weeks.push(weekObj);
           userInput.day(7);
