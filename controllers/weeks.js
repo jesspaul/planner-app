@@ -1,4 +1,5 @@
 const { set } = require("mongoose");
+const moment = require('moment');
 const Week = require("../models/week.js");
 
 // index - list all weeks
@@ -35,15 +36,18 @@ function newWeek(req, res) {
 
 // create - take user information and create new week in DB
 function create(req, res) {
-  const dateInput = new Date(req.body.startDay);
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   
-  req.body.month = months[dateInput.getUTCMonth()];
-  req.body.year = dateInput.getUTCFullYear();
-  req.body.weekday = days[dateInput.getUTCDay()];
-  req.body.weekdate = dateInput.getUTCDate();
-  req.body.endDay = new Date(dateInput.setUTCDate(req.body.weekdate + 6)).toUTCString();
+  const dateInput = moment(req.body.userInputDay);
+  
+  if (days[dateInput.day()] !== 'Monday') {
+    dateInput.day(1);
+  }
+ 
+  req.body.startDay = dateInput;
+  req.body.month = months[dateInput.month()];
+  req.body.year = dateInput.year();
   
   Week.create(req.body, (error, newWeek) => {
     Week.findById(newWeek._id, function(err, foundWeek) {
@@ -52,16 +56,18 @@ function create(req, res) {
           foundWeek.habits.push({content: habit});
         });
       }
+
       for (let i = 0; i < 7; i++) {
-        let newDay = new Date(dateInput.setUTCDate(req.body.weekdate + i));
         let dayObj = {
-          month: months[newDay.getUTCMonth()],
-          year: newDay.getUTCFullYear(),
-          weekday: days[newDay.getUTCDay()],
-          weekdate: newDay.getUTCDate(),
+          month: months[dateInput.day(i).month()],
+          year: dateInput.day(i).year(),
+          weekday: days[dateInput.day(i).day()],
+          weekdate: dateInput.day(i).date(),
         };
+        console.log(`idx ${i} dayobj`, dayObj)
         foundWeek.days.push(dayObj);
       };
+
       foundWeek.save(function(err) {
         res.redirect("/weeks");
       });

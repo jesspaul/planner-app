@@ -31,11 +31,9 @@ const daySchema = new Schema({
 
 const weekSchema = new Schema({
   startDay: String,
-  endDay: String,
   month: String,
-  year: Number,
-  weekday: String,
   weekdate: Number,
+  year: Number,
   days: [daySchema],
   habits: [habitSchema],
   goals: [goalSchema],
