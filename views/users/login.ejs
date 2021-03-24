@@ -1,20 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('../partials/header') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='/css/style.css' />
-    <title>Expresstagram</title>
-</head>
+<div class="center-section">
+    <div class="heading">
+      <h2>Login to the App</h2>
+    </div>
+    <div class="container">
+        <form action="/users/login" method="POST">
+            <div class="first">
+                <label>
+                    <p>Username:</p>                
+                    <input type="text" name="username" /><br />
+                </label>
+            </div>
+            <div class="second">
+                <label>
+                    <p>Password:</p>                
+                    <input type="password" name="password" /><br />
+                </label>
+            </div>
+            <input type="submit" value="Signup" />
+        </form>
+    </div>
+  </div>
 
-<body>
-    <h1>Login</h1>
-    <form action="/users/login" method="POST">
-        Username: <input type="text" name="username" /><br />
-        Password: <input type="password" name="password" /><br />
-        <input type="submit" value="Login" />
-    </form>
-</body>
-
-</html>
+<%- include('../partials/footer') %>
