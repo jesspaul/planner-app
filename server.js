@@ -6,7 +6,7 @@ const moment = require('moment');
 const PORT = process.env.PORT || 3000;
 const indexRouter = require("./routes/index.js");
 const weeksRouter = require("./routes/weeks.js");
-const daysRouter = require("./routes/days.js");
+const entriesRouter = require("./routes/entries.js");
 
 //connect to DB
 require('./config/database');
@@ -19,7 +19,7 @@ app.use(methodOverride("_method"));
 // mount routes
 app.use("/", indexRouter);
 app.use("/weeks", weeksRouter);
-app.use("/", daysRouter);
+app.use("/", entriesRouter);
 
 // wildcard route
 app.get("*", (req, res) => {
