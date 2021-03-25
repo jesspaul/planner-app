@@ -1,23 +1,70 @@
 <%- include('../partials/header') %>
 
-<div class="center-section">
-  <div class="back-link">
-    <a href="/months/"><i class="fas fa-arrow-left"></i> Back to All Months</a>
+<div class="back-link">
+  <a href="/months/"><i class="fas fa-arrow-left"></i> Back to All Months</a>
+</div>
+<div class="month-view">
+  <div class="month-section">
+    <div class="heading">
+      <h2>Monthly Habits</h2>
+    </div>
+    <div class="container">
+      <table>
+        <tr>
+          <th class="no-border"></th>
+          <% const shortDays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']; %>
+          <% shortDays.forEach(function(day) { %>
+            <th><%= day.charAt(0).toUpperCase() + day.slice(1) %></th>
+          <% }); %>
+        </tr>
+        <% month.weeks.forEach(function(week) { %>
+        <% week.habits.forEach(function(habit) { %>
+          <tr>
+            <td class="habit-table-label no-border"><%= habit.content %></td>
+            
+            <% shortDays.forEach(function(day) { %>
+              <td class="table-body <%= habit[day + 'Complete'] ? 'checked' : '' %>">
+                <%= habit[day + 'Complete'] ? 'X' : '' %>
+              </td>
+            <% }); %>
+          </tr>
+        <% }); %>
+        <% }); %>
+      </table>
+    </div>
   </div>
-  <div class="heading">
-    <h2>Weeks</h2>
-  </div>
-
-  <div class="container">
-    <ul>
-      <% month.weeks.forEach(function(week) { %>
-      <li>
-        <a href="/months/<%= month._id %>/weeks/<%= week._id %>">Week of <%= week.month %> <%= week.weekdate %> <%= week.year %></a>
-    
-        <a class="submit-icon" href="/weeks/<%= week._id%>/edit">
-      </li>
-      <% }); %>
-    </ul>
+  <div class="month-section">
+    <div class="heading">
+      <h2>Weeks</h2>
+    </div>
+    <div class="container">
+      <ul>
+        <% month.weeks.forEach(function(week) { %>
+        <li>
+          <a href="/months/<%= month._id %>/weeks/<%= week._id %>">Week of <%= week.month %> <%= week.weekdate %> <%= week.year %></a>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+    <div class="heading">
+      <h2>Monthly Goals</h2>
+    </div>
+    <div class="container">
+      <ul>
+        <% goals.forEach(function(goal) { %>
+          <li>
+            <%= goal.content %>
+            <a class="submit-icon" href="/months/<%= month._id %>/goals/<%= goal._id %>/edit"><span title="Edit Goal"><i class="fas fa-edit"></i></span></a>
+            <form action="/months/<%= month._id %>/goals/<%= goal._id %>?_method=DELETE" method="post">
+              <button class="submit-icon" type="submit"><span title="Delete Goal"><i class="fas fa-trash-alt"></i></span></button>
+            </form>
+          </li>
+        <% }); %>
+      </ul>
+      <div class="add-new">
+        <a class="submit-icon" href="/months/<%= month._id %>/goals/new"><i class="fas fa-plus"></i> Add New</a>
+      </div>
+    </div>
   </div>
 </div>
 

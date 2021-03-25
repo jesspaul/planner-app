@@ -121,6 +121,12 @@ form {
     display: inline;
 }
 
+/* month view */
+.month-view {
+    display: flex;
+    justify-content: space-around;
+}
+
 /* weeks show view */
 /* week */
 .week-view {

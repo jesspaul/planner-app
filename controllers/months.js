@@ -94,7 +94,6 @@ function show(req, res) {
       month: foundMonth,
       days: foundMonth.days,
       goals: foundMonth.goals,
-      habits: foundMonth.habits,
       title: `${foundMonth.month} ${foundMonth.year}`
     });
   });

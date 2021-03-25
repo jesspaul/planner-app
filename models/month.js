@@ -42,6 +42,7 @@ const monthSchema = new Schema({
   month: String,
   year: Number,
   weeks: [weekSchema],
+  goals: [goalSchema],
 })
 
 module.exports = mongoose.model("Month", monthSchema);
