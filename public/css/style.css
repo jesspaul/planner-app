@@ -1,9 +1,14 @@
 :root {
-    --link-color: #ed5e4b;
+    /* --link-color: #ed5e4b;
     --primary-color: #284B63;
     --secondary-color: #FFFFFF;
     --primary-accent: #FFEAAE;
-    --secondary-accent: #BBDBD1;
+    --secondary-accent: #BBDBD1; */
+    --link-color: #cca8e9;
+    --primary-color: #defcf9;
+    --secondary-color: #FFFFFF;
+    --primary-accent: #c3bef0;
+    --secondary-accent: #cadefc;
 }
 
 * {
@@ -27,7 +32,7 @@ body {
 }
 
 #home-page-main {
-    background-color: rgba(38, 75, 97, 0.4);
+    background-color: rgba(76, 120, 121, 0.4);
     height: 100vh;
     margin: 0;
     display: flex;
@@ -38,13 +43,16 @@ body {
 }
 
 #home-page-main>h1 {
+    color: var(--secondary-color);
     font-size: 80px;
-    filter: drop-shadow(5px 5px 4px var(--primary-color));
+    filter: drop-shadow(5px 5px 4px gray);
 }
 
 #main-subheading {
     text-align: center;
     margin: 10px;
+    background-color: var(--secondary-accent);
+    padding: 10px;
 }
 
 nav {
@@ -74,14 +82,10 @@ main {
 }
 
 h1 {
-    color: var(--secondary-color);
+    color: #5d759a;
     font-size: 40px;
     margin-bottom: 30px;
     text-align: center;
-}
-
-h2 {
-    margin-bottom: 15px;
 }
 
 h3 {
@@ -111,11 +115,18 @@ form {
     min-width: 200px;
     min-height: 500px;
     overflow: auto;
+    border: 1px solid var(--secondary-accent);
 }
 
 .heading {
+    display: flex;
+    justify-content: space-between;
     background-color: var(--secondary-accent);
-    padding: 5px 10px;
+    padding: 10px;
+}
+
+.weekday, .weekdate {
+    display: inline;
 }
 
 .day-content {
