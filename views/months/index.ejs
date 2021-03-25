@@ -9,9 +9,9 @@
     <ul>
       <% months.forEach(function(month) { %>
       <li>
-        <a href="/months/<%= month._id; %>">Month: <%= month.month %> <%= month.year %></a>
+        <a href="/months/<%= month._id; %>"><%= month.month %> <%= month.year %></a>
     
-        <a class="submit-icon" href="/months/<%= month._id%>/edit"><span title="Edit Month"><i class="fas fa-edit"></i></span></a>
+        <!-- <a class="submit-icon" href="/months/<!%= month._id%>/edit"><span title="Edit Month"><i class="fas fa-edit"></i></span></a> -->
         <form action="/months/<%= month._id%>?_method=DELETE" method="POST">
           <button class="submit-icon" type="submit"><span title="Delete Month"><i class="fas fa-trash-alt"></i></span></button>
         </form>

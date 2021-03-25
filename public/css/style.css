@@ -18,6 +18,35 @@ body {
     background-color: var(--primary-color);
 }
 
+#home-page-body {
+    background-image: url(../planner.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+#home-page-main {
+    background-color: rgba(38, 75, 97, 0.4);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+#home-page-main>h1 {
+    font-size: 80px;
+    filter: drop-shadow(5px 5px 4px var(--primary-color));
+}
+
+#main-subheading {
+    text-align: center;
+    margin: 10px;
+}
+
 nav {
     position: fixed;
     top: 0;
@@ -60,7 +89,8 @@ h3 {
 }
 
 a {
-    color: var(--link-color)
+    color: var(--link-color);
+    text-decoration: none;
 }
 
 form {
@@ -84,8 +114,6 @@ form {
 }
 
 .heading {
-    display: flex;
-    justify-content: space-between;
     background-color: var(--secondary-accent);
     padding: 5px 10px;
 }
@@ -180,4 +208,5 @@ th, .habit-table-label {
 
 .back-link {
     margin: 5px;
+    font-weight: bold;
 }

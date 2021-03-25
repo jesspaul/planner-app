@@ -19,7 +19,7 @@ function index(req, res) {
 
     res.render("months/index", {
       months,
-      title: 'Months Index Page'
+      title: 'Planner Index'
     });
   });
 }

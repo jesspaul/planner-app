@@ -7,28 +7,16 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
 
-    <title>
-        <% if (title != 'Home') { %>
-            <%= title %> | Planner App
-        <% } else { %>
-            Planner App
-        <% } %>
-    </title>
+    <title><%= title %> | Planner App</title>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="/">Home Page</a></li>
-            <li><a href="/users/new">Signup</a></li>
-            <li><a href="/users/signin">Login</a></li>
-            <li><a href="/months">Months Index</a></li>
+            <li><a href="/">Home</a></li>
+            <!-- <li><a href="/users/new">Signup</a></li>
+            <li><a href="/users/signin">Login</a></li> -->
+            <li><a href="/months">Index</a></li>
         </ul>
     </nav>
     <main>
-        <h1>
-            <% if (title != 'Home') { %>
-                <%= title %>
-            <% } else { %>
-                Planner App
-            <% } %>
-        </h1>
+        <h1><%= title %></h1>
