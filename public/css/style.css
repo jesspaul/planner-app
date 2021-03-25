@@ -171,13 +171,13 @@ th, .habit-table-label {
 .center-section {
     margin: 0 auto;
     width: 50%;
-    background-color: var(--secondary-color);
 }
 
 .container {
+    background-color: var(--secondary-color);
     padding: 20px;
 }
 
-.month-link {
+.back-link {
     margin: 5px;
 }
