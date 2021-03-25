@@ -1,3 +1,16 @@
+@font-face {
+    font-family: "Hello";
+    src: url("./fonts/Hello.ttf")
+}
+@font-face {
+    font-family: "Caviar Dreams";
+    src: url("./fonts/CaviarDreams_Bold.ttf")
+}
+@font-face {
+    font-family: "Please";
+    src: url("./fonts/Please\ write\ me\ a\ song.ttf")
+}
+
 :root {
     --link-color: 204, 168, 233;
     --primary-color: 202, 222, 252;
@@ -15,7 +28,7 @@
 body {
     margin: 0;
     height: 100vh;
-    font-family: Helvetica;
+    font-family: "Caviar Dreams", Helvetica, sans-serif;
     word-wrap: break-word;
     background-image: url(../ink.jpg);
     background-position: center;
@@ -67,24 +80,32 @@ nav a {
     text-decoration: none;
     font-weight: bold;
     color: rgba(var(--secondary-accent));
+    font-family: "Please";
+    font-size: 25px;
 }
 
 /* all pages */
 main {
-    background-color: rgba(250, 250, 250, 0.4);
     height: 100vh;
+    margin: 0 10px;
 }
 
 .title-section {
-    padding-top: 50px;
+    padding-top: 70px;
 }
 
 h1 {
+    font-family: "hello";
     color: rgba(var(--secondary-color));
     filter: drop-shadow(2px 2px 3px rgba(var(--dark-color)));
-    font-size: 40px;
+    font-size: 50px;
     margin-bottom: 30px;
     text-align: center;
+}
+
+h2 {
+    font-family: "Please";
+    font-size: 30px;
 }
 
 h3 {
@@ -103,7 +124,6 @@ form {
 /* weeks show view */
 /* week */
 .week-view {
-    margin: 0 10px;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-row-gap: 5px;
@@ -213,10 +233,16 @@ th, .habit-table-label {
 
 .container {
     background-color: rgba(var(--secondary-color), .4);
+    border: 1px solid rgba(var(--secondary-accent));
     padding: 20px;
 }
 
 .back-link {
-    margin: 5px;
+    margin-bottom: 5px;
     font-weight: bold;
+}
+
+.back-link>a {
+    background-color: rgba(var(--secondary-color), .4);
+    padding: 2px;
 }
