@@ -31,7 +31,7 @@ body {
     height: 100vh;
     font-family: "Caviar Dreams", Helvetica, sans-serif;
     word-wrap: break-word;
-    background-image: url(../ink.jpg);
+    background-image: url(../img/ink.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -206,6 +206,7 @@ form {
 .tracker-section {
     display: inline;
     min-width: 500px;
+    padding-bottom: 30px;
 }
 
 .add-new {
