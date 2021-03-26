@@ -5,18 +5,6 @@ const Month = require("../models/month.js");
 // index - list all months
 function index(req, res) {
   Month.find({}, (error, months) => {
-    months.sort(function(a, b) {
-      a = a.startDay;
-      b = b.startDay;
-      if (a < b) {
-        return -1;
-      } else if (a > b) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
-
     res.render("months/index", {
       months,
       title: 'Planner Index'
