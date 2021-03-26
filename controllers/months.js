@@ -71,9 +71,12 @@ function create(req, res) {
             };
             weekObj.days.push(dayObj);
           };
-          req.body.habitList.forEach(function(habit) {
-            weekObj.habits.push({content: habit});
-          });
+
+          if (req.body.habitList) {
+            req.body.habitList.forEach(function(habit) {
+              weekObj.habits.push({content: habit});
+            });
+          }
 
           foundMonth.weeks.push(weekObj);
           userInput.day(7);

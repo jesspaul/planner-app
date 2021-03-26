@@ -12,7 +12,8 @@
 }
 
 :root {
-    --link-color: 204, 168, 233;
+    --link-hover-color: 204, 168, 233;
+    --link-color: 172, 105, 190;
     --primary-color: 202, 222, 252;
     --secondary-color: 246, 255, 255;
     --primary-accent: 195, 190, 240;
@@ -67,7 +68,7 @@ nav {
     padding: 10px;
     display: flex;
     justify-content: flex-end;
-    background-color: rgba(var(--primary-color), .7);
+    background-color: rgba(var(--primary-color), .6);
     overflow: hidden;
 }
 
@@ -78,9 +79,7 @@ nav li {
 
 nav a {
     text-decoration: none;
-    font-weight: bold;
-    color: rgba(var(--secondary-accent));
-    font-family: "Please";
+    font-family: "Please", Helvetica, sans-serif;
     font-size: 25px;
 }
 
@@ -115,6 +114,10 @@ h3 {
 a {
     color: rgba(var(--link-color));
     text-decoration: none;
+}
+
+a:hover {
+    color:rgba(var(--link-hover-color));
 }
 
 form {
@@ -173,6 +176,7 @@ form {
 
 .category {
     font-size: 13px;
+    color: rgba(var(--dark-color), 0.6);
 }
 
 .buttons {
@@ -189,6 +193,7 @@ form {
 
 .submit-icon:hover {
     cursor: pointer;
+    color: rgba(var(--link-hover-color));
 }
 
 /* habit tracker and goal sections */
@@ -255,4 +260,20 @@ th, .habit-table-label {
 .back-link>a {
     background-color: rgba(var(--secondary-color), .4);
     padding: 2px;
+}
+
+input, textarea {
+    outline: none;
+    border: 1px solid rgba(var(--primary-accent));
+}
+
+textarea {
+    font-family: sans-serif;
+    resize: none;
+    width: 400px;
+    height: 200px;
+}
+
+.lower {
+    margin-top: 10px;
 }
