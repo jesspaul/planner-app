@@ -92,7 +92,6 @@ function show(req, res) {
   Month.findById(req.params.id, (err, foundMonth) => {
     res.render("months/show", {
       month: foundMonth,
-      days: foundMonth.days,
       goals: foundMonth.goals,
       title: `${foundMonth.month} ${foundMonth.year}`
     });

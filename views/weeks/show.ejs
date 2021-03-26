@@ -1,8 +1,5 @@
 <%- include('../partials/header') %>
 
-<div class="back-link">
-  <a href="/months/<%= month._id %>"><i class="fas fa-arrow-left"></i> Back to <%= month.month %></a>
-</div>
 <div class="week-view">
   <% days.forEach(function(day) { %>
     <div class="day <%= day.weekday.toLowerCase() %>">
@@ -54,6 +51,9 @@
       </div>
     </div>
     <% }); %>
+</div>
+<div class="back-link">
+  <a href="/months/<%= month._id %>"><i class="fas fa-arrow-left"></i> Back to <%= month.month %></a>
 </div>
 
 <% const shortDays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']; %>

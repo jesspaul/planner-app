@@ -127,6 +127,10 @@ form {
     justify-content: space-around;
 }
 
+.month-section {
+    min-width: 45vw;
+}
+
 /* weeks show view */
 /* week */
 .week-view {
@@ -244,8 +248,8 @@ th, .habit-table-label {
 }
 
 .back-link {
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-top: 8px;
+    margin-left: 8px;
 }
 
 .back-link>a {
