@@ -31,9 +31,7 @@ body {
     height: 100vh;
     font-family: "Caviar Dreams", Helvetica, sans-serif;
     word-wrap: break-word;
-    background-image: url(../img/ink.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url(../img/ink.jpg) no-repeat center center fixed;
     background-size: cover;
     color: rgba(var(--dark-color));
 }
@@ -278,3 +276,9 @@ textarea {
 .lower {
     margin-top: 10px;
 }
+
+/* @media (max-width: 1720px) {
+    body {
+        background-size: auto;
+    }
+} */
